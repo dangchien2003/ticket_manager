@@ -1,1 +1,4 @@
 com\mycompany\ticket_manager\Ticket_manager.class
+com\mycompany\ticket_manager\util\ConnectDatabase.class
+com\mycompany\ticket_manager\view\admin\FrameLogin$1.class
+com\mycompany\ticket_manager\view\admin\FrameLogin.class
