@@ -239,7 +239,7 @@ public class MovieInfo extends javax.swing.JFrame {
                             .addComponent(jButton4)
                             .addComponent(jButton5)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
+                .addGap(63, 63, 63))
         );
 
         pack();
