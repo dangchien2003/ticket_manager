@@ -13,7 +13,6 @@ import com.mycompany.ticket_manager.util.NumberUtil;
 import com.mycompany.ticket_manager.util.StringUtil;
 import com.mycompany.ticket_manager.util.Timestamp;
 import com.mycompany.ticket_manager.util.valid.EmailValid;
-import com.mysql.cj.util.TimeUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -42,11 +41,6 @@ public class StaffService {
             }
 
             ResultSet result = staffRepository.getStaffByEmail(email);
-
-            if (result == null) {
-                return new Response<Void>("Lỗi truy vấn");
-            }
-
             result.next();
             if (result.getRow() == 0) {
                 return new Response<Void>("Email không tồn tại");
@@ -70,7 +64,7 @@ public class StaffService {
             String id = result.getString("idnv");
             String name = result.getString("name");
 
-            return new Response<CurrentStaff>().ok(new CurrentStaff(id, name, rank));
+            return new Response<CurrentStaff>(true, "Email không đúng", new CurrentStaff(rank, rank, rank));
         } catch (Exception e) {
             e.printStackTrace();
             return new Response<Void>(e.getMessage());
@@ -83,28 +77,35 @@ public class StaffService {
 
     public Response<?> addStaff(Staff staff) {
         try {
-            staff.setName(staff.getName().trim());
-            staff.setSdt(staff.getSdt().trim());
-            staff.setEmail(staff.getEmail().trim());
-
-            if (staff.getName().equals("")) {
-                return new Response<Void>().error("Tên không hợp lệ");
+            if (staff == null) {
+                return new Response<Void>("Dữ liệu không tồn tại");
             }
 
+            if (staff.getName().trim().length() != staff.getName().length() || staff.getEmail().trim().length() != staff.getEmail().length() || staff.getSdt().trim().length() != staff.getSdt().length()) {
+                return new Response<Void>("Dữ liệu không chứa khoảng trắng đầu cuối");
+            }
+
+            if (staff.getName().equals("")) {
+                return new Response<Void>("Tên không hợp lệ");
+            }
             if (staff.getSdt().equals("")) {
                 return new Response<Void>("Sđt không hợp lệ");
+            }
+
+            if (staff.getPassword().length() < 8) {
+                return new Response<Void>("Mật khẩu quá ngắn");
+            }
+
+            if (!EmailValid.isEmail(staff.getEmail())) {
+                return new Response<Void>("Email không hợp lệ");
             }
 
             if (staff.getSex() == -1) {
                 return new Response<Void>("Giới tính không hợp lệ");
             }
 
-            if (EmailValid.isEmail(staff.getEmail()) == false) {
-                return new Response<Void>("Email không hợp lệ");
-            }
-
-            if (staff.getPassword().trim().length() < 8) {
-                return new Response<Void>("Mật khẩu không hợp lệ");
+            if (staff.getSdt().equals("")) {
+                return new Response<Void>("Sđt không hợp lệ");
             }
 
             ResultSet getStaff = staffRepository.getStaffByEmail(staff.getEmail());
@@ -114,18 +115,18 @@ public class StaffService {
             }
 
             staff.setIdnv("STAFF_" + Timestamp.getNowTimeStamp() + "_" + NumberUtil.genNumber(3));
-            staff.setPassword(Hash.getHash(staff.getPassword(), null));
             staff.setRank("staff");
+            staff.setPassword(Hash.getHash(staff.getPassword(), null));
+
             int inserted = staffRepository.addStaff(staff);
 
             if (inserted < 1) {
-                return new Response<Void>("Lỗi thêm nhân viên");
+                return new Response<Void>("Thêm không thành công");
             }
             return new Response<Void>().ok(null);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            return new Response<Void>("Lỗi server");
-
+            return new Response<Void>("Lỗi truy vấn");
         }
     }
 }

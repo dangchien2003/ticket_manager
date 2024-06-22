@@ -10,7 +10,6 @@ E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\util\ConnectDatabase.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\repository\test.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\model\CurrentStaff.java
-E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\service\MailService.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\model\EmailTemplate.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\model\Staff.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\repository\StaffRepository.java
@@ -20,3 +19,5 @@ E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\util\StringUtil.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\helper\ConnectMySQL.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\Ticket_manager.java
+E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\model\Movie.java
+E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\model\Response.java

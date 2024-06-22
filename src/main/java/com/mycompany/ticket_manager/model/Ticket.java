@@ -8,6 +8,15 @@ package com.mycompany.ticket_manager.model;
  *
  * @author chien
  */
-public class test {
-    
+public class Ticket {
+
+    private String name;
+    private String email;
+    private String calendar;
+    private int numPerson;
+    private int numPopcorn;
+    private int numWater;
+    private long priceTicket;
+    private long pricePopcorn;
+    private long priceWater;
 }

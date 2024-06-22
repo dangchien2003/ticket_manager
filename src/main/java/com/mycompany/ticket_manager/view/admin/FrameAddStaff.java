@@ -24,8 +24,8 @@ public class FrameAddStaff extends javax.swing.JPanel {
         initComponents();
         buttonGroup1.add(nam);
         buttonGroup1.add(nu);
-        buttonGroup1.add(noCheck);
-        this.noCheck.setVisible(false);
+        buttonGroup1.add(nocheck);
+        nocheck.setVisible(false);
         this.staffController = new StaffController();
     }
 
@@ -50,14 +50,6 @@ public class FrameAddStaff extends javax.swing.JPanel {
         staff.setSex(this.getSex());
         return staff;
     }
-    
-    private void clean(){
-        this.name.setText("");
-        this.email.setText("");
-        this.sdt.setText("");
-        this.password.setText("");
-        this.noCheck.setSelected(true);
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,7 +71,7 @@ public class FrameAddStaff extends javax.swing.JPanel {
         nu = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
-        noCheck = new javax.swing.JRadioButton();
+        nocheck = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -116,7 +108,7 @@ public class FrameAddStaff extends javax.swing.JPanel {
 
         email.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
 
-        noCheck.setText("empty");
+        nocheck.setText("nocheck");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -137,9 +129,8 @@ public class FrameAddStaff extends javax.swing.JPanel {
                         .addComponent(nam)
                         .addGap(18, 18, 18)
                         .addComponent(nu)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(noCheck)
-                        .addGap(29, 29, 29))
+                        .addGap(29, 29, 29)
+                        .addComponent(nocheck))
                     .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
@@ -159,12 +150,12 @@ public class FrameAddStaff extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(nam)
                     .addComponent(nu)
-                    .addComponent(noCheck))
+                    .addComponent(nocheck))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -229,21 +220,18 @@ public class FrameAddStaff extends javax.swing.JPanel {
             }
         });
 
-        error.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         error.setForeground(new java.awt.Color(255, 51, 51));
         error.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         error.setText(" ");
-        error.setToolTipText("");
-        error.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101))
+                .addGap(69, 69, 69))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -271,7 +259,7 @@ public class FrameAddStaff extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(293, 293, 293))
+                .addGap(330, 330, 330))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,21 +270,26 @@ public class FrameAddStaff extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void clickRandomPassword(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickRandomPassword
         // TODO add your handling code here:
         Response<String> result = this.staffController.randomPassword();
+        if (!result.getSuccess()) {
+            this.error.setText(result.getMessage());
+            return;
+        }
         this.password.setText(result.getData());
     }//GEN-LAST:event_clickRandomPassword
+
 
     private void clickAddStaff(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickAddStaff
         // TODO add your handling code here:
         Staff staff = this.getInfoStaff();
         Response response = this.staffController.addStaff(staff);
-        if (response.getSuccess() == false) {
+        if (!response.getSuccess()) {
             this.error.setForeground(Color.red);
             this.error.setText(response.getMessage());
             return;
@@ -304,10 +297,10 @@ public class FrameAddStaff extends javax.swing.JPanel {
 
         this.error.setForeground(Color.green);
         this.error.setText("Thêm thành công");
-        this.clean();
+
+
     }//GEN-LAST:event_clickAddStaff
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -327,7 +320,7 @@ public class FrameAddStaff extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton nam;
     private javax.swing.JTextField name;
-    private javax.swing.JRadioButton noCheck;
+    private javax.swing.JRadioButton nocheck;
     private javax.swing.JRadioButton nu;
     private javax.swing.JTextField password;
     private javax.swing.JTextField sdt;

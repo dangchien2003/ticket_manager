@@ -35,18 +35,18 @@ public class StaffRepository {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, email);
             return preparedStatement.executeQuery();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Lỗi sql"); 
+            System.out.println("Lỗi sql");
             return null;
-        }catch(Exception e){
-            System.out.println("Lỗi"); 
+        } catch (Exception e) {
+            System.out.println("Lỗi");
             e.printStackTrace();
             return null;
         }
     }
-    
-    public int addStaff(Staff staff){
+
+    public int addStaff(Staff staff) {
         String sql = "INSERT INTO staff(idnv, name, sdt, email, sex, `rank`, password) values(?, ?, ?, ?, ?, ?, ?)";
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -59,11 +59,11 @@ public class StaffRepository {
             preparedStatement.setString(7, staff.getPassword());
             int rowsInserted = preparedStatement.executeUpdate();
             return rowsInserted;
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Lỗi sql"); 
+            System.out.println("Lỗi sql");
             return -1;
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return -1;
         }
