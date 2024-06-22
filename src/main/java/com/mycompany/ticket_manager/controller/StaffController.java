@@ -5,6 +5,7 @@
 package com.mycompany.ticket_manager.controller;
 
 import com.mycompany.ticket_manager.model.Response;
+import com.mycompany.ticket_manager.model.Staff;
 import com.mycompany.ticket_manager.service.StaffService;
 
 /**
@@ -12,15 +13,23 @@ import com.mycompany.ticket_manager.service.StaffService;
  * @author chien
  */
 public class StaffController {
+
     StaffService staffService;
+
     public StaffController() {
         this.staffService = new StaffService();
     }
-    
-    public Response<?> login(String email, String password, String permissions){
+
+    public Response<?> login(String email, String password, String permissions) {
         return this.staffService.login(email, password, permissions);
     }
+
+    public Response<String> randomPassword() {
+        return this.staffService.randomPassword();
+    }
     
-    public 
-    
+    public Response<?> addStaff(Staff staff){
+        return this.staffService.addStaff(staff);
+    }
+
 }

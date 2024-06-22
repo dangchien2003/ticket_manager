@@ -9,20 +9,41 @@ package com.mycompany.ticket_manager.model;
  * @author chien
  */
 public class Response<T> {
+
     private boolean success;
     private String message;
     private T data = null;
+
+    public Response() {
+    }
+    
+    public Response<T> ok(T data){
+        this.success = true;
+        this.data = data;
+        return this;
+    }
+    
+    public Response<T> error(String message){
+        this.success = false;
+        this.message = message;
+        return this;
+    }
 
     public Response(boolean success, String message, T data) {
         this.success = success;
         this.message = message;
         this.data = data;
     }
-    
-    public Response(boolean success, String message) {
-        this.success = success;
+
+    public Response(String message) {
+        this.success = false;
         this.message = message;
     }
+//
+//    public Response(T data) {
+//        this.success = true;
+//        this.message = message;
+//    }
 
     public boolean getSuccess() {
         return success;
@@ -47,6 +68,5 @@ public class Response<T> {
     public void setData(T data) {
         this.data = data;
     }
-    
-    
+
 }

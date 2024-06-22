@@ -5,13 +5,17 @@
 package com.mycompany.ticket_manager.view.admin;
 
 import com.mycompany.ticket_manager.controller.StaffController;
+import com.mycompany.ticket_manager.model.Response;
 import com.mycompany.ticket_manager.model.Staff;
+import java.awt.Color;
 
 /**
  *
  * @author chien
  */
 public class FrameAddStaff extends javax.swing.JPanel {
+
+    StaffController staffController;
 
     /**
      * Creates new form FrameAddStaff
@@ -20,22 +24,24 @@ public class FrameAddStaff extends javax.swing.JPanel {
         initComponents();
         buttonGroup1.add(nam);
         buttonGroup1.add(nu);
-        StaffController staffController = new StaffController();
+        buttonGroup1.add(nocheck);
+        nocheck.setVisible(false);
+        this.staffController = new StaffController();
     }
-    
-    private int getSex(){
-        if(this.nam.isSelected()){
+
+    private int getSex() {
+        if (this.nam.isSelected()) {
             return 1;
         }
-        
-        if(this.nu.isSelected()){
+
+        if (this.nu.isSelected()) {
             return 0;
         }
-        
+
         return -1;
     }
-    
-    private Staff getInfoStaff(){
+
+    private Staff getInfoStaff() {
         Staff staff = new Staff();
         staff.setName(this.name.getText());
         staff.setSdt(this.sdt.getText());
@@ -44,10 +50,6 @@ public class FrameAddStaff extends javax.swing.JPanel {
         staff.setSex(this.getSex());
         return staff;
     }
-    
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,6 +71,7 @@ public class FrameAddStaff extends javax.swing.JPanel {
         nu = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
+        nocheck = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -77,6 +80,7 @@ public class FrameAddStaff extends javax.swing.JPanel {
         btnGetPassword = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnAdd = new javax.swing.JButton();
+        error = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(995, 523));
 
@@ -104,6 +108,8 @@ public class FrameAddStaff extends javax.swing.JPanel {
 
         email.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
 
+        nocheck.setText("nocheck");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -122,7 +128,9 @@ public class FrameAddStaff extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(nam)
                         .addGap(18, 18, 18)
-                        .addComponent(nu))
+                        .addComponent(nu)
+                        .addGap(29, 29, 29)
+                        .addComponent(nocheck))
                     .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
@@ -141,7 +149,8 @@ public class FrameAddStaff extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(nam)
-                    .addComponent(nu))
+                    .addComponent(nu)
+                    .addComponent(nocheck))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -211,21 +220,30 @@ public class FrameAddStaff extends javax.swing.JPanel {
             }
         });
 
+        error.setForeground(new java.awt.Color(255, 51, 51));
+        error.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        error.setText(" ");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(80, Short.MAX_VALUE)
+                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(error)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -233,16 +251,15 @@ public class FrameAddStaff extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(497, 497, 497)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(123, 123, 123)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(127, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(330, 330, 330))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,17 +270,35 @@ public class FrameAddStaff extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void clickRandomPassword(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickRandomPassword
         // TODO add your handling code here:
-        this.password.setText(this.staffController.randomPassword());
+        Response<String> result = this.staffController.randomPassword();
+        if (!result.getSuccess()) {
+            this.error.setText(result.getMessage());
+            return;
+        }
+        this.password.setText(result.getData());
     }//GEN-LAST:event_clickRandomPassword
+
 
     private void clickAddStaff(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickAddStaff
         // TODO add your handling code here:
+        Staff staff = this.getInfoStaff();
+        Response response = this.staffController.addStaff(staff);
+        if (!response.getSuccess()) {
+            this.error.setForeground(Color.red);
+            this.error.setText(response.getMessage());
+            return;
+        }
+
+        this.error.setForeground(Color.green);
+        this.error.setText("Thêm thành công");
+
+
     }//GEN-LAST:event_clickAddStaff
 
 
@@ -272,6 +307,7 @@ public class FrameAddStaff extends javax.swing.JPanel {
     private javax.swing.JButton btnGetPassword;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField email;
+    private javax.swing.JLabel error;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -284,6 +320,7 @@ public class FrameAddStaff extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton nam;
     private javax.swing.JTextField name;
+    private javax.swing.JRadioButton nocheck;
     private javax.swing.JRadioButton nu;
     private javax.swing.JTextField password;
     private javax.swing.JTextField sdt;
