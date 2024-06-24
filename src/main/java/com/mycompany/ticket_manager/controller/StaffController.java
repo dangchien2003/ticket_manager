@@ -7,6 +7,7 @@ package com.mycompany.ticket_manager.controller;
 import com.mycompany.ticket_manager.model.Response;
 import com.mycompany.ticket_manager.model.Staff;
 import com.mycompany.ticket_manager.service.StaffService;
+import java.util.List;
 
 /**
  *
@@ -27,9 +28,29 @@ public class StaffController {
     public Response<String> randomPassword() {
         return this.staffService.randomPassword();
     }
-    
-    public Response<?> addStaff(Staff staff){
+
+    public Response<?> addStaff(Staff staff) {
         return this.staffService.addStaff(staff);
     }
+
+    public Response<List<Staff>> getAllStaff() {
+        return this.staffService.getAllStaff();
+    }
+
+    public Response<List<Staff>> findStaff(String id, String name) {
+        return this.staffService.findStaff(id, name);
+    }
+
+    public Response<String> blockStaff(String id) {
+        return this.staffService.blockStaff(id);
+
+    }
+    
+        public Response<String> repassword(String id) {
+            return this.staffService.repassword(id);
+        }
+
+    
+    
 
 }

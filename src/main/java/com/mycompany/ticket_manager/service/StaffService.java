@@ -15,6 +15,9 @@ import com.mycompany.ticket_manager.util.Timestamp;
 import com.mycompany.ticket_manager.util.valid.EmailValid;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -126,7 +129,121 @@ public class StaffService {
             return new Response<Void>().ok(null);
         } catch (Exception e) {
             e.printStackTrace();
-            return new Response<Void>("Lỗi truy vấn");
+            return new Response<Void>("Lỗi không xác định");
         }
     }
+
+    public Response<List<Staff>> getAllStaff() {
+        try {
+            ResultSet result = this.staffRepository.getAll();
+            if (result == null) {
+                return new Response<>("Lỗi truy vấn");
+            }
+
+            List<Staff> allStaff = new ArrayList<>();
+
+            while (result.next()) {
+                Staff staff = new Staff();
+                staff.setIdnv(result.getString("idnv"));
+                staff.setName(result.getString("name"));
+                staff.setSdt(result.getString("sdt"));
+                staff.setEmail(result.getString("email"));
+                staff.setSex(result.getInt("sex"));
+                staff.setRank(result.getString("rank"));
+                staff.setBlockAt(result.getLong("blockAt"));
+                allStaff.add(staff);
+            }
+            return new Response<List<Staff>>().ok(allStaff);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response<>("Lỗi không xác định");
+        }
+    }
+
+    public Response<List<Staff>> findStaff(String id, String name) {
+        try {
+            if (id.trim().length() == 0 && name.trim().length() == 0) {
+                return new Response<>("Không tìm thấy thông tin lọc");
+            }
+
+            ResultSet resultSet = null;
+            if (id.trim().length() > 0 && name.trim().length() > 0) {
+                resultSet = this.staffRepository.find(id, name);
+            } else if (id.trim().length() > 0) {
+                resultSet = this.staffRepository.findById(id);
+
+            } else {
+                resultSet = this.staffRepository.findByName(name);
+
+            }
+            if (resultSet == null) {
+                return new Response<>("Lỗi truy vấn");
+            }
+            List<Staff> listStaff = new ArrayList<>();
+
+            while (resultSet.next()) {
+                Staff staff = new Staff();
+                staff.setIdnv(resultSet.getString("idnv"));
+                staff.setName(resultSet.getString("name"));
+                staff.setSdt(resultSet.getString("sdt"));
+                staff.setEmail(resultSet.getString("email"));
+                staff.setSex(resultSet.getInt("sex"));
+                staff.setRank(resultSet.getString("rank"));
+                staff.setBlockAt(resultSet.getLong("blockAt"));
+                listStaff.add(staff);
+            }
+            return new Response<List<Staff>>().ok(listStaff);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response<>("Lỗi không xác định");
+        }
+    }
+
+    public Response<String> blockStaff(String id) {
+        try {
+            if (id.equals("")) {
+                return new Response<>("Id không tồn tại");
+            }
+            long time = Timestamp.getNowTimeStamp();
+            int updated = this.staffRepository.setBlockAt(id, time);
+            if (updated == -1) {
+                return new Response<>("Lỗi truy vấn");
+
+            }
+            if (updated < 1) {
+                return new Response<>("Cập nhật thất bại");
+            }
+            return new Response<String>().ok(Timestamp.convertTimeStampToString(time, "HH:mm:ss dd-MM-yyyy"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response<>("Lỗi không xác định");
+        }
+    }
+
+    public Response<String> repassword(String id) {
+        try {
+            if (id.equals("")) {
+                return new Response<>("Id không tồn tại");
+            }
+            
+            String passwordStr = StringUtil.genString(10);
+            String passwordHashed = Hash.getHash(passwordStr, null);
+            
+            int updated = this.staffRepository.updatePassword(id, passwordHashed);
+            if(updated == -1){
+                return new Response<>("Lỗi truy vấn");
+            }
+            
+            if(updated < 1){
+                return new Response<>("Thay đổi mật khẩu thất bại");
+            }
+            
+            return new Response<String>().ok(passwordStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response<>("Lỗi không xác định");
+        }
+
+    }
+
 }

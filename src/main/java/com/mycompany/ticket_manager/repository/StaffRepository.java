@@ -68,4 +68,105 @@ public class StaffRepository {
             return -1;
         }
     }
+    
+    public ResultSet getAll(){
+        String sql = "select * from staff";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return null;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public ResultSet find(String id, String name){
+         String sql = "select * from staff where idnv like '%"+id+"%' or name like '%"+name+"%'";
+         System.out.println(sql); 
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return null;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public ResultSet findById(String id){
+         String sql = "select * from staff where idnv like '%"+id+"%'";
+         System.out.println(sql); 
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return null;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public ResultSet findByName(String name){
+         String sql = "select * from staff where name like '%"+name+"%'";
+         System.out.println(sql); 
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return null;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public int setBlockAt(String id, long time){
+        String sql = "update staff set blockAt = ? where idnv = ?";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setLong(1, time);
+            preparedStatement.setString(2, id);
+            int rowsInserted = preparedStatement.executeUpdate();
+            return rowsInserted;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return -1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+    
+    
+    public int updatePassword(String id, String password) {
+        String sql = "update staff set password = ? where idnv = ?";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, password);
+            preparedStatement.setString(2, id);
+            int rowsInserted = preparedStatement.executeUpdate();
+            return rowsInserted;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return -1;
+        }
+    }
 }

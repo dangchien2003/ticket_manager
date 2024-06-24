@@ -6,7 +6,6 @@ package com.mycompany.ticket_manager.view.admin;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import javax.swing.border.Border;
 
 /**
  *
@@ -111,6 +110,7 @@ public class Main extends javax.swing.JFrame {
 
     private void clickShowAllStaff(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickShowAllStaff
         // TODO add your handling code here:
+        this.addPanel(new FrameInfoStaff());
     }//GEN-LAST:event_clickShowAllStaff
 
     private void clickAddStaff(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickAddStaff
