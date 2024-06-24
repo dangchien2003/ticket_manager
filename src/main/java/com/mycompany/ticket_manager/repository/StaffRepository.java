@@ -169,4 +169,22 @@ public class StaffRepository {
             return -1;
         }
     }
+    
+    public int updateStaff(Staff staff) {
+        String sql = "update staff set name = ?, sdt = ?, email = ?, sex = ? where idnv = ?";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, staff.getName());
+            preparedStatement.setString(2, staff.getSdt());
+            preparedStatement.setString(3, staff.getEmail());
+            preparedStatement.setInt(4, staff.getSex());
+            preparedStatement.setString(5, staff.getIdnv());
+            int rowsInserted = preparedStatement.executeUpdate();
+            return rowsInserted;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return -1;
+        }
+    }
 }

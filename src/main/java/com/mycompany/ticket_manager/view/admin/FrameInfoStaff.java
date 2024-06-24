@@ -142,6 +142,11 @@ public class FrameInfoStaff extends javax.swing.JPanel {
 
         save.setBackground(new java.awt.Color(0, 204, 204));
         save.setText("Lưu");
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clickEdit(evt);
+            }
+        });
 
         changePassword.setBackground(new java.awt.Color(255, 255, 102));
         changePassword.setText("Cấp mật khẩu");
@@ -290,6 +295,7 @@ public class FrameInfoStaff extends javax.swing.JPanel {
 
     private void clickFind(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickFind
         // TODO add your handling code here:
+        this.clean();
         Response<List<Staff>> response = this.staffController.findStaff(this.find_id.getText(), this.find_name.getText());
         if (response.getSuccess() == false) {
             JOptionPane.showMessageDialog(null, response.getMessage(), "Thông báo lỗi", JOptionPane.WARNING_MESSAGE);
@@ -311,14 +317,16 @@ public class FrameInfoStaff extends javax.swing.JPanel {
             return;
         }
 
-        Response<String> response = this.staffController.blockStaff(id);
+        Response<List<Object>> response = this.staffController.blockStaff(id);
         if (response.getSuccess() == false) {
             JOptionPane.showMessageDialog(null, response.getMessage(), "Thông báo lỗi", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         this.stop.setSelected(true);
-        this.stop.setText(response.getData());
+        this.stop.setText(response.getData().get(0).toString());
+        this.listStaff.get(this.table.getSelectedRow()).setBlockAt((Long)response.getData().get(1));
+        this.listStaff.get(this.table.getSelectedRow()).setStringBlockAt(response.getData().get(0).toString());
         JOptionPane.showMessageDialog(null, "Cập nhật thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_clickStop
 
@@ -338,6 +346,23 @@ public class FrameInfoStaff extends javax.swing.JPanel {
 
     }//GEN-LAST:event_clickRepassword
 
+    private void clickEdit(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickEdit
+        // TODO add your handling code here:\
+        Staff staff = this.getInfoStaff();
+        Response response = this.staffController.editStaff(staff);
+         if (response.getSuccess() == false) {
+            JOptionPane.showMessageDialog(null, response.getMessage(), "Thông báo lỗi", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        JOptionPane.showMessageDialog(null, "Đã cập nhật thông tin mới", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        Staff staffInList = this.listStaff.get(table.getSelectedRow());
+        staffInList.setName(staff.getName());
+        staffInList.setSdt(staff.getSdt());
+        staffInList.setEmail(staff.getEmail());
+        staffInList.setSex(staff.getSex());
+        this.pushTable();
+    }//GEN-LAST:event_clickEdit
+
     private void showStaff(Staff staff) {
         this.clean();
         this.id.setText(staff.getIdnv());
@@ -353,7 +378,7 @@ public class FrameInfoStaff extends javax.swing.JPanel {
 
         if (staff.getBlockAt() != 0) {
             this.stop.setSelected(true);
-            this.stop.setText(staff.getBlockAt().toString());
+            this.stop.setText(staff.getStringBlockAt());
         }
     }
 
@@ -385,6 +410,28 @@ public class FrameInfoStaff extends javax.swing.JPanel {
             Object[] data = {staff.getIdnv(), staff.getName(), staff.getEmail()};
             tableModel.addRow(data);
         }
+    }
+    
+     private int getSex() {
+        if (this.nam.isSelected()) {
+            return 1;
+        }
+
+        if (this.nu.isSelected()) {
+            return 0;
+        }
+
+        return -1;
+    }
+
+    private Staff getInfoStaff() {
+        Staff staff = new Staff();
+        staff.setIdnv(this.id.getText());
+        staff.setName(this.name.getText());
+        staff.setSdt(this.sdt.getText());
+        staff.setEmail(this.email.getText());
+        staff.setSex(this.getSex());
+        return staff;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

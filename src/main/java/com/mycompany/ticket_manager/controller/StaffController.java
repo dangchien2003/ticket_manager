@@ -41,16 +41,17 @@ public class StaffController {
         return this.staffService.findStaff(id, name);
     }
 
-    public Response<String> blockStaff(String id) {
+    public Response<List<Object>> blockStaff(String id) {
         return this.staffService.blockStaff(id);
 
     }
-    
-        public Response<String> repassword(String id) {
-            return this.staffService.repassword(id);
-        }
 
-    
-    
+    public Response<String> repassword(String id) {
+        return this.staffService.repassword(id);
+    }
+
+    public Response<?> editStaff(Staff staff) {
+        return this.staffService.editStaff(staff);
+    }
 
 }

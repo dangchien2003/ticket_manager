@@ -17,6 +17,7 @@ public class Staff {
     private int sex;
     private String rank;
     private Long blockAt;
+    private String stringBlockAt;
     private String password;
 
     public Staff() {
@@ -96,6 +97,15 @@ public class Staff {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getStringBlockAt() {
+        return stringBlockAt;
+    }
+
+    public void setStringBlockAt(String stringBlockAt) {
+        this.stringBlockAt = stringBlockAt;
+    }
+    
     
     
     

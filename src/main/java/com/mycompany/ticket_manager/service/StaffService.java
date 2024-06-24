@@ -16,6 +16,7 @@ import com.mycompany.ticket_manager.util.valid.EmailValid;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -151,6 +152,9 @@ public class StaffService {
                 staff.setSex(result.getInt("sex"));
                 staff.setRank(result.getString("rank"));
                 staff.setBlockAt(result.getLong("blockAt"));
+                if(staff.getBlockAt() > 0){
+                    staff.setStringBlockAt(Timestamp.convertTimeStampToString(staff.getBlockAt(), "HH:mm:ss dd-MM-yyyy"));
+                }
                 allStaff.add(staff);
             }
             return new Response<List<Staff>>().ok(allStaff);
@@ -190,6 +194,9 @@ public class StaffService {
                 staff.setSex(resultSet.getInt("sex"));
                 staff.setRank(resultSet.getString("rank"));
                 staff.setBlockAt(resultSet.getLong("blockAt"));
+                if(staff.getBlockAt() > 0){
+                    staff.setStringBlockAt(Timestamp.convertTimeStampToString(staff.getBlockAt(), "HH:mm:ss dd-MM-yyyy"));
+                }
                 listStaff.add(staff);
             }
             return new Response<List<Staff>>().ok(listStaff);
@@ -199,7 +206,7 @@ public class StaffService {
         }
     }
 
-    public Response<String> blockStaff(String id) {
+    public Response<List<Object>> blockStaff(String id) {
         try {
             if (id.equals("")) {
                 return new Response<>("Id không tồn tại");
@@ -213,7 +220,7 @@ public class StaffService {
             if (updated < 1) {
                 return new Response<>("Cập nhật thất bại");
             }
-            return new Response<String>().ok(Timestamp.convertTimeStampToString(time, "HH:mm:ss dd-MM-yyyy"));
+            return new Response<List<Object>>().ok(new ArrayList<Object>(Arrays.asList(Timestamp.convertTimeStampToString(time, "HH:mm:ss dd-MM-yyyy"),time)));
         } catch (Exception e) {
             e.printStackTrace();
             return new Response<>("Lỗi không xác định");
@@ -225,19 +232,19 @@ public class StaffService {
             if (id.equals("")) {
                 return new Response<>("Id không tồn tại");
             }
-            
+
             String passwordStr = StringUtil.genString(10);
             String passwordHashed = Hash.getHash(passwordStr, null);
-            
+
             int updated = this.staffRepository.updatePassword(id, passwordHashed);
-            if(updated == -1){
+            if (updated == -1) {
                 return new Response<>("Lỗi truy vấn");
             }
-            
-            if(updated < 1){
+
+            if (updated < 1) {
                 return new Response<>("Thay đổi mật khẩu thất bại");
             }
-            
+
             return new Response<String>().ok(passwordStr);
         } catch (Exception e) {
             e.printStackTrace();
@@ -246,4 +253,47 @@ public class StaffService {
 
     }
 
+    public Response<Void> editStaff(Staff staff) {
+        try {
+            if(staff.getIdnv().equals("")){
+                return new Response<>("Id không xác định");
+            }
+            if (staff.getName().trim().length() != staff.getName().length() || staff.getEmail().trim().length() != staff.getEmail().length() || staff.getSdt().trim().length() != staff.getSdt().length()) {
+                return new Response<>("Dữ liệu không chứa khoảng trắng đầu cuối");
+            }
+
+            if (staff.getName().equals("")) {
+                return new Response<>("Tên không hợp lệ");
+            }
+            if (staff.getSdt().equals("")) {
+                return new Response<>("Sđt không hợp lệ");
+            }
+            
+            if (!EmailValid.isEmail(staff.getEmail())) {
+                return new Response<>("Email không hợp lệ");
+            }
+
+            if (staff.getSex() == -1) {
+                return new Response<>("Giới tính không hợp lệ");
+            }
+
+            if (staff.getSdt().equals("")) {
+                return new Response<>("Sđt không hợp lệ");
+            }
+            
+            int updated = this.staffRepository.updateStaff(staff);
+            if (updated == -1) {
+                return new Response<>("Lỗi truy vấn");
+            }
+
+            if (updated < 1) {
+                return new Response<>("Thay đổi mật khẩu thất bại");
+            }
+
+            return new Response<Void>().ok(null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response<>("Lỗi không xác định");
+        }
+    }
 }
