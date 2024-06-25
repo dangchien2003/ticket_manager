@@ -11,7 +11,9 @@ import com.mycompany.ticket_manager.util.Timestamp;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -202,4 +204,40 @@ public class MovieService {
         }
     }
 
+    public Response<List<Map<String, String>>> getMovieInDate(long timestamp) {
+        try {
+            if (timestamp <= 0) {
+                return new Response<>("Thời gian không đúng");
+            }
+
+            String nowDate = Timestamp.convertTimeStampToString(Timestamp.getNowTimeStamp(), "dd-MM-yyyy");
+            long minTime = Timestamp.convertTimeToTimestamp(nowDate, "dd-MM-yyyy") - 86400;
+            if (timestamp < minTime) {
+                return new Response<>("Chỉ hỗ trợ từ " + Timestamp.convertTimeStampToString(minTime, "dd-MM-yyyy"));
+            }
+
+            ResultSet resultSet = this.movieRepository.getMovieInDate(timestamp, timestamp + 86400);
+
+            if (resultSet == null) {
+                return new Response<>("Lỗi truy vấn");
+            }
+
+            List listMovie = new ArrayList<Map<String, String>>();
+            Map<String, String> map = new HashMap<>();
+            map.put("name", "Chọn bộ phim");
+            map.put("id", "0");
+            listMovie.add(map);
+            while (resultSet.next()) {
+                map = new HashMap<>();
+                map.put("id", resultSet.getString("id"));
+                map.put("name", resultSet.getString("name"));
+                listMovie.add(map);
+            }
+
+            return new Response<List<Map<String, String>>>().ok(listMovie);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response<>("Có lỗi xảy ra");
+        }
+    }
 }

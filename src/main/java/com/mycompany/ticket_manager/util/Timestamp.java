@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.Instant;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeParseException;
 /**
@@ -52,11 +53,11 @@ public class Timestamp {
             if (format.contains("HH")) {
                 // Nếu định dạng chứa thời gian, sử dụng LocalDateTime
                 LocalDateTime dateTime = LocalDateTime.parse(time, formatter);
-                return dateTime.toEpochSecond(ZoneOffset.UTC);
+                 return dateTime.atZone(ZoneId.systemDefault()).toEpochSecond();
             } else {
                 // Nếu định dạng chỉ chứa ngày tháng, sử dụng LocalDate và atStartOfDay()
                 LocalDateTime dateTime = LocalDateTime.parse(time + " 00:00:00", DateTimeFormatter.ofPattern(format + " HH:mm:ss"));
-                return dateTime.toEpochSecond(ZoneOffset.UTC);
+                 return dateTime.atZone(ZoneId.systemDefault()).toEpochSecond();
             }
         } catch (DateTimeParseException e) {
             System.out.println("Định dạng không hỗ trợ: " + e.getMessage());

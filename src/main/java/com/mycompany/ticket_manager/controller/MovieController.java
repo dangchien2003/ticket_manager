@@ -41,5 +41,9 @@ public class MovieController {
     public Response<List<Movie>> findMovieStatus(boolean status) {
         return this.movieService.findStatus(status);
     }
-
+    
+    public Response<List<Map<String, String>>> getMovieInDate(long timestamp){
+        return this.movieService.getMovieInDate(timestamp);
+    }
+    
 }

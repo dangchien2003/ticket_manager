@@ -165,4 +165,23 @@ public class MovieRepository {
             return null;
         }
     }
+    
+    public ResultSet getMovieInDate(long start, long end){
+         String sql = "SELECT movie.id, movie.name FROM movie JOIN calendar ON movie.id = calendar.idMovie WHERE calendar.cancleAt IS NULL AND movie.hideAt IS NULL AND calendar.time BETWEEN ? AND ?";
+
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setLong(1, start);
+            preparedStatement.setLong(2, end);
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return null;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
