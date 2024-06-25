@@ -33,6 +33,23 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Phim"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="allMovie">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="T&#x1ea5;t c&#x1ea3; phim"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="allMovieActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="addMovie">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Th&#xea;m phim"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu3">
           <Properties>

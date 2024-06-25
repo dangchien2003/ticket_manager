@@ -37,6 +37,9 @@ public class Main extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        allMovie = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        addMovie = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
@@ -84,6 +87,19 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Phim");
+
+        allMovie.setText("Tất cả phim");
+        allMovie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                allMovieActionPerformed(evt);
+            }
+        });
+        jMenu2.add(allMovie);
+        jMenu2.add(jSeparator2);
+
+        addMovie.setText("Thêm phim");
+        jMenu2.add(addMovie);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Lịch chiếu");
@@ -117,6 +133,11 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.addPanel(new FrameAddStaff());
     }//GEN-LAST:event_clickAddStaff
+
+    private void allMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allMovieActionPerformed
+        // TODO add your handling code here:
+        this.addPanel(new FrameInfoMovie());
+    }//GEN-LAST:event_allMovieActionPerformed
     private void addPanel(Component panel){
         jPanel1.setLayout(new BorderLayout());
         jPanel1.removeAll();
@@ -159,6 +180,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem addMovie;
+    private javax.swing.JMenuItem allMovie;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -169,5 +192,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }
