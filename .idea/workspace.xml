@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c2f9e80f-e2e7-4c0f-b364-9c254f9051a6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ticket_manager/controller/StaffController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ticket_manager/controller/StaffController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ticket_manager/repository/StaffRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ticket_manager/repository/StaffRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ticket_manager/service/StaffService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ticket_manager/service/StaffService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ticket_manager/view/admin/Main.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ticket_manager/view/admin/Main.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ticket_manager/view/admin/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ticket_manager/view/admin/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ticket_manager/view/admin/StaffInfo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ticket_manager/view/admin/StaffInfo.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ticket_manager/view/admin/StaffInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ticket_manager/view/admin/StaffInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/com.mycompany/ticket_manager/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/com.mycompany/ticket_manager/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ticket_manager/controller/StaffController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ticket_manager/controller/StaffController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ticket_manager/repository/StaffRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ticket_manager/repository/StaffRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ticket_manager/service/MailService$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ticket_manager/service/MailService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ticket_manager/service/StaffService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ticket_manager/service/StaffService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ticket_manager/view/admin/FrameLogin.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ticket_manager/view/admin/Main$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ticket_manager/view/admin/Main$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ticket_manager/view/admin/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ticket_manager/view/admin/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2iH365K9PvfOuiMfMU68JLCx37A" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Ticket_manager.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "nhân-viên",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/DH_CNDA/CNJAVA/BTL/ticket_manager",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c2f9e80f-e2e7-4c0f-b364-9c254f9051a6" name="Changes" comment="" />
+      <created>1719133496485</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1719133496485</updated>
+      <workItem from="1719133497548" duration="234000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
