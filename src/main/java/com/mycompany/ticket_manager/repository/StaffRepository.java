@@ -45,6 +45,23 @@ public class StaffRepository {
             return null;
         }
     }
+    
+    public ResultSet getStaffById(String id) {
+        String sql = "select * from staff where idnv = ?";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return null;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public int addStaff(Staff staff) {
         String sql = "INSERT INTO staff(idnv, name, sdt, email, sex, `rank`, password) values(?, ?, ?, ?, ?, ?, ?)";

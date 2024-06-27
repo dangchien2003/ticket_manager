@@ -46,4 +46,41 @@ public class CalendarRepository {
         }
 
     }
+
+    public ResultSet getRemaing(String id) {
+        String sql = "SELECT movie.time as timeMovie, calendar.time as timeCalendar, calendar.room FROM calendar JOIN movie ON movie.id = calendar.idMovie WHERE calendar.id = ? limit 1";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return null;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+     public ResultSet getCalendar(String id) {
+        String sql = "select * from calendar where id = ?";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return null;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    
+
 }

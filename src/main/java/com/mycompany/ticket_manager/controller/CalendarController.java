@@ -22,4 +22,8 @@ public class CalendarController {
     public Response<List<Map<String, String>>> getCalendarMovie(String idMovie, long timestamp){
         return this.calendarService.getCalendarMovie(idMovie, timestamp);
     }
+    
+    public Response<String> getRemaingTime(String idCalendar){
+        return this.calendarService.getRemaingTime(idCalendar);
+    }
 }

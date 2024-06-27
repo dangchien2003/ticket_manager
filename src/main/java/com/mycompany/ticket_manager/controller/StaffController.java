@@ -4,6 +4,7 @@
  */
 package com.mycompany.ticket_manager.controller;
 
+import com.mycompany.ticket_manager.model.CurrentStaff;
 import com.mycompany.ticket_manager.model.Response;
 import com.mycompany.ticket_manager.model.Staff;
 import com.mycompany.ticket_manager.service.StaffService;
@@ -21,7 +22,7 @@ public class StaffController {
         this.staffService = new StaffService();
     }
 
-    public Response<?> login(String email, String password, String permissions) {
+    public Response<CurrentStaff> login(String email, String password, String permissions) {
         return this.staffService.login(email, password, permissions);
     }
 

@@ -32,46 +32,46 @@ public class StaffService {
         this.staffRepository = new StaffRepository();
     }
 
-    public Response<?> login(String email, String password, String permissions) {
+    public Response<CurrentStaff> login(String email, String password, String permissions) {
         try {
             email = email.trim();
             password = password.trim();
             if (EmailValid.isEmail(email) == false) {
-                return new Response<Void>("Email không đúng");
+                return new Response<>("Email không đúng");
             }
 
             if (password.length() == 0) {
-                return new Response<Void>("Mật khẩu không hợp lệ");
+                return new Response<>("Mật khẩu không hợp lệ");
             }
 
             ResultSet result = staffRepository.getStaffByEmail(email);
             result.next();
             if (result.getRow() == 0) {
-                return new Response<Void>("Email không tồn tại");
+                return new Response<>("Email không tồn tại");
             }
 
             String DbPassword = result.getString("password");
             if (!Hash.verify(DbPassword, password)) {
-                return new Response<Void>("Mật khẩu không đúng");
+                return new Response<>("Mật khẩu không đúng");
             }
 
             long blockAt = result.getLong("blockAt");
             if (blockAt != 0) {
-                return new Response<Void>("Tài khoản đã bị khoá");
+                return new Response<>("Tài khoản đã bị khoá");
             }
 
             String rank = result.getString("rank");
             if (!rank.equals(permissions)) {
-                return new Response<Void>("Không có quyền truy cập");
+                return new Response<>("Không có quyền truy cập");
             }
 
             String id = result.getString("idnv");
             String name = result.getString("name");
 
-            return new Response<CurrentStaff>(true, "Email không đúng", new CurrentStaff(rank, rank, rank));
+            return new Response<CurrentStaff>(true, "Email không đúng", new CurrentStaff(id, name, rank));
         } catch (Exception e) {
             e.printStackTrace();
-            return new Response<Void>(e.getMessage());
+            return new Response<>(e.getMessage());
         }
     }
 

@@ -5,9 +5,11 @@
 package com.mycompany.ticket_manager.view;
 
 import com.mycompany.ticket_manager.controller.StaffController;
+import com.mycompany.ticket_manager.model.CurrentStaff;
 import com.mycompany.ticket_manager.model.Login;
 import com.mycompany.ticket_manager.model.Response;
 import com.mycompany.ticket_manager.view.admin.Main;
+import com.mycompany.ticket_manager.view.staff.BuyTicket;
 
 /**
  *
@@ -26,8 +28,10 @@ public class FrameLogin extends javax.swing.JFrame {
     }
     
     private void setDefault(){
-        this.email.setText("chienboy03@gmail.com");
-        this.password.setText("admin");
+        this.email.setText("abc@gmail.com");
+        this.password.setText("staff");
+//        this.email.setText("chienboy03@gmail.com");
+//        this.password.setText("admin");
         this.error.setText("");
     }
     
@@ -158,6 +162,16 @@ public class FrameLogin extends javax.swing.JFrame {
 
     private void clickLoginStaffBuyTicket(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickLoginStaffBuyTicket
         // TODO add your handling code here:
+        Login infoLogin = this.getInfoLogin();
+        Response<CurrentStaff> response = this.staffController.login(infoLogin.getEmail(), infoLogin.getPassword(), "staff");
+        if(response.getSuccess() == false){
+            this.error.setText(response.getMessage());
+            return;
+        }
+        
+        BuyTicket mainBuy = new BuyTicket(response.getData());
+        mainBuy.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_clickLoginStaffBuyTicket
 
     /**
