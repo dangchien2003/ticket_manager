@@ -694,6 +694,7 @@ public class BuyTicket extends javax.swing.JFrame {
         this.priceChairsMap = new HashMap<>();
         this.pricePopcornMap = new HashMap<>();
         this.priceWaterMap = new HashMap<>();
+        this.remaining.setText("");
     }
 
     private void pushListPhim() {
