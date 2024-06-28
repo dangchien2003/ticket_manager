@@ -28,7 +28,40 @@ public class MovieRepository {
             connection = null;
         }
     }
-
+    
+    public ResultSet getMovieById(String id) {
+        String sql = "select * from movie where id = ?";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return null;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public ResultSet fetchAllDataOk() {
+        String sql = "select * from movie where movie.hideAt is null order by createAt";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return null;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     public ResultSet fetchAllData() {
         String sql = "select * from movie order by createAt";
         try {

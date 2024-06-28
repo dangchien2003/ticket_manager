@@ -132,6 +132,7 @@ public class BuyTicket extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
+        date.setDateFormatString("dd-MM-yyyy");
         date.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 changeDate(evt);

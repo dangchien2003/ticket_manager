@@ -62,6 +62,42 @@ public class MovieService {
             return new Response<>("Có lỗi xảy ra");
         }
     }
+    
+    public Response<List<Movie>> getAllMovieOk() {
+        try {
+            ResultSet resultSet = this.movieRepository.fetchAllDataOk();
+            if (resultSet == null) {
+                return new Response<>("Lỗi truy vấn dữ liệu");
+            }
+
+            List listMovie = new ArrayList<Movie>();
+
+            while (resultSet.next()) {
+                Movie movie = new Movie();
+                movie.setId(resultSet.getString("id"));
+                movie.setName(resultSet.getString("name"));
+                movie.setAge(resultSet.getInt("age"));
+                movie.setMinPrice(resultSet.getInt("minPrice"));
+                movie.setTime(resultSet.getInt("time"));
+                movie.setHideAt(resultSet.getLong("hideAt"));
+                movie.setStrHideAt(movie.getHideAt() == 0 ? null : Timestamp.convertTimeStampToString(movie.getHideAt(), "HH:mm:ss dd-MM-yyyy"));
+                movie.setCreateAt(resultSet.getLong("createAt"));
+                movie.setStrCreateAt(movie.getCreateAt() == 0 ? null : Timestamp.convertTimeStampToString(movie.getCreateAt(), "HH:mm:ss dd-MM-yyyy"));
+
+                movie.setImage(resultSet.getString("image"));
+                listMovie.add(movie);
+            }
+
+            if (listMovie.size() == 0) {
+                return new Response<>("Không có dữ liệu");
+            }
+
+            return new Response<List<Movie>>().ok(listMovie);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response<>("Có lỗi xảy ra");
+        }
+    }
 
     public Response<List<Object>> stopMovie(String id) {
         try {

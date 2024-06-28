@@ -26,6 +26,10 @@ public class MovieController {
         return this.movieService.getAllMovie();
     }
 
+    public Response<List<Movie>> getAllMovieOk() {
+        return this.movieService.getAllMovieOk();
+    }
+
     public Response<List<Object>> stopMovie(String id) {
         return this.movieService.stopMovie(id);
     }
@@ -41,9 +45,9 @@ public class MovieController {
     public Response<List<Movie>> findMovieStatus(boolean status) {
         return this.movieService.findStatus(status);
     }
-    
-    public Response<List<Map<String, String>>> getMovieInDate(long timestamp){
+
+    public Response<List<Map<String, String>>> getMovieInDate(long timestamp) {
         return this.movieService.getMovieInDate(timestamp);
     }
-    
+
 }

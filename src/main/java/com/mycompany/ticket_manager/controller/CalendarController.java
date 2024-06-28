@@ -14,16 +14,26 @@ import java.util.Map;
  * @author chien
  */
 public class CalendarController {
+
     CalendarService calendarService;
-    public CalendarController(){
+
+    public CalendarController() {
         this.calendarService = new CalendarService();
     }
-    
-    public Response<List<Map<String, String>>> getCalendarMovie(String idMovie, long timestamp){
+
+    public Response<List<Map<String, String>>> getCalendarMovie(String idMovie, long timestamp) {
         return this.calendarService.getCalendarMovie(idMovie, timestamp);
     }
-    
-    public Response<String> getRemaingTime(String idCalendar){
+
+    public Response<String> getRemaingTime(String idCalendar) {
         return this.calendarService.getRemaingTime(idCalendar);
     }
+
+    public Response<List<Map<String, Object>>> getCalendar(long date, String selectedRoom) {
+        return this.calendarService.getCalendar(date, selectedRoom);
+    }
+    public Response<Map<String, Object>> addCalendar(String playAt, String room, String movie) {
+        return this.calendarService.addCalendar(playAt, room, movie);
+    }
+
 }
