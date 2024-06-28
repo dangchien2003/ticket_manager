@@ -9,6 +9,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import io.github.cdimascio.dotenv.Dotenv;
+import java.io.UnsupportedEncodingException;
 
 /**
  *
@@ -49,12 +50,14 @@ public class MailService extends Thread {
             public void run() {
                 try {
                     Message msg = new MimeMessage(s);
-                    msg.setFrom(new InternetAddress(from));
+                    msg.setFrom(new InternetAddress(from, author));
                     msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
                     msg.setSubject(subject);
                     msg.setContent(body, "text/html; charset=UTF-8");
                     Transport.send(msg);
                 } catch (MessagingException ex) {
+                    ex.printStackTrace();
+                }catch(UnsupportedEncodingException ex){
                     ex.printStackTrace();
                 }
             }
