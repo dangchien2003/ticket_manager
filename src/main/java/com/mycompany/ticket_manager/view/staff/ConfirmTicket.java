@@ -23,13 +23,16 @@ public class ConfirmTicket extends javax.swing.JFrame {
     TicketController ticketController;
     Ticket ticket;
     List<String> listChairs;
-
+    String movie;
+    String playAt;
     /**
      * Creates new form InfoTicket
      */
     public ConfirmTicket(BuyTicket buyTicket, Ticket ticket, String start, String movie, String priceChair, String pricePopcorn, String priceWater, List<String> listChair) {
         initComponents();
         this.ticket = ticket;
+        this.movie = movie;
+        this.playAt = start;
         this.ticketController = new TicketController();
         this.buyTicket = buyTicket;
         this.listChairs = listChair;
@@ -386,7 +389,7 @@ public class ConfirmTicket extends javax.swing.JFrame {
 
     private void clickDoneOrder(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickDoneOrder
         // TODO add your handling code here:
-        Response<Boolean> response = this.ticketController.addTicket(this.ticket, this.listChairs);
+        Response<Boolean> response = this.ticketController.addTicket(this.ticket, this.listChairs, this.movie, this.playAt);
         if (response.getSuccess() == false) {
             JOptionPane.showMessageDialog(null, response.getMessage(), "Thông báo lỗi", JOptionPane.WARNING_MESSAGE);
             return;

@@ -1,9 +1,11 @@
 com\mycompany\ticket_manager\view\staff\BuyTicket$6.class
 com\mycompany\ticket_manager\view\admin\FrameInfoMovie$7.class
+com\mycompany\ticket_manager\repository\MailRepository$2.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$11.class
 com\mycompany\ticket_manager\view\admin\FrameAddStaff$2.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$9.class
 com\mycompany\ticket_manager\view\admin\FrameInfoMovie$3.class
+com\mycompany\ticket_manager\service\MailService$1.class
 com\mycompany\ticket_manager\view\staff\BuyTicket.class
 com\mycompany\ticket_manager\view\admin\FrameInfoStaff$4.class
 com\mycompany\ticket_manager\view\staff\ConfirmTicket.class
@@ -11,9 +13,11 @@ com\mycompany\ticket_manager\repository\StaffRepository.class
 com\mycompany\ticket_manager\view\admin\FrameInfoMovie$6.class
 com\mycompany\ticket_manager\service\TicketService.class
 com\mycompany\ticket_manager\controller\SeatController.class
+com\mycompany\ticket_manager\repository\MailRepository.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$5.class
 com\mycompany\ticket_manager\repository\CalendarRepository.class
 com\mycompany\ticket_manager\repository\MovieRepository.class
+com\mycompany\ticket_manager\repository\MailRepository$1.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$2.class
 com\mycompany\ticket_manager\controller\MovieController.class
 com\mycompany\ticket_manager\view\admin\FrameInfoStaff$3.class
@@ -25,6 +29,7 @@ com\mycompany\ticket_manager\controller\StaffController.class
 com\mycompany\ticket_manager\view\admin\FrameAddStaff$1.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$8.class
 com\mycompany\ticket_manager\repository\TicketRepository.class
+com\mycompany\ticket_manager\service\MailService$2.class
 com\mycompany\ticket_manager\service\SeatService.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$1.class
 com\mycompany\ticket_manager\view\admin\FrameInfoMovie$5.class
@@ -44,8 +49,10 @@ com\mycompany\ticket_manager\service\TicketService$2.class
 com\mycompany\ticket_manager\view\staff\ConfirmTicket$1.class
 com\mycompany\ticket_manager\view\admin\FrameInfoMovie$1.class
 com\mycompany\ticket_manager\view\admin\FrameInfoStaff$1.class
+com\mycompany\ticket_manager\service\RenderService.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$3.class
 com\mycompany\ticket_manager\controller\CalendarController.class
+com\mycompany\ticket_manager\service\MailService.class
 com\mycompany\ticket_manager\view\admin\FrameInfoMovie$4.class
 com\mycompany\ticket_manager\view\admin\Main$4.class
 com\mycompany\ticket_manager\controller\TicketController.class

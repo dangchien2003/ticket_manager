@@ -4,7 +4,6 @@
  */
 package com.mycompany.ticket_manager.service;
 
-import com.mycompany.ticket_manager.model.CurrentStaff;
 import com.mycompany.ticket_manager.model.Response;
 import com.mycompany.ticket_manager.model.Seat;
 import com.mycompany.ticket_manager.model.Ticket;
@@ -22,6 +21,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.thymeleaf.context.Context;
 
 /**
  *
@@ -35,6 +35,8 @@ public class TicketService {
     StaffRepository staffRepository;
     TicketRepository ticketRepository;
     SeatRepository seatRepository;
+    MailService mailService;
+    RenderService renderService;
 
     public TicketService() {
         this.movieRepository = new MovieRepository();
@@ -42,6 +44,8 @@ public class TicketService {
         this.staffRepository = new StaffRepository();
         this.ticketRepository = new TicketRepository();
         this.seatRepository = new SeatRepository();
+        this.mailService = new MailService();
+        this.renderService = new RenderService();
     }
 
     public Response<Map<String, Object>> getPriceService(int quantity, int object) {
@@ -165,7 +169,7 @@ public class TicketService {
         }
     }
 
-    public Response<Boolean> addTicket(Ticket ticket, List<String> chairs) {
+    public Response<Boolean> addTicket(Ticket ticket, List<String> chairs, String nameMovie, String playAt) {
         try {
             ticket.setCreateAt(Timestamp.getNowTimeStamp());
             int insertTicket = this.ticketRepository.insertTicket(ticket);
@@ -175,18 +179,29 @@ public class TicketService {
             if (insertTicket == 0) {
                 return new Response<>("Tạo vé thất bại");
             }
-            
+
             List<Seat> dataSeat = new ArrayList<>();
-            
-            for(String location: chairs){
+
+            for (String location : chairs) {
                 dataSeat.add(new Seat(ticket.getId(), location, ticket.getCalendar()));
             }
-            
+
             int inserted = this.seatRepository.insertListSeat(dataSeat);
-            
-            if(inserted == -1){
+
+            if (inserted == -1) {
                 return new Response<>("Lỗi truy vấn dữ liệu");
             }
+
+            Context context = new Context();
+            context.setVariable("movie", nameMovie);
+            context.setVariable("calendar", playAt);
+            context.setVariable("chairs", String.join(", ", chairs));
+            context.setVariable("ticket", ticket.getId());
+            context.setVariable("customer", ticket.getName());
+
+            String body = this.renderService.run(context, "mail_ticket");
+
+            this.mailService.senMail("Thông tin vé phim", body, ticket.getEmail());
 
             return new Response<Boolean>().ok(true);
         } catch (Exception e) {
