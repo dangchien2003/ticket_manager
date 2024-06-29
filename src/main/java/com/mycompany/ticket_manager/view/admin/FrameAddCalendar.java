@@ -422,7 +422,7 @@ public class FrameAddCalendar extends javax.swing.JPanel {
         DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
         Object[] data = {calendar.get("nameMovie"), "P" + calendar.get("room"), calendar.get("datePlay"), calendar.get("timeStart"), calendar.get("timeEnd")};
         tableModel.addRow(data);
-        JOptionPane.showMessageDialog(null, "Tạo thành công", "Thông báo lỗi", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Tạo thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton2clickAddCalendar
 
     private void movieschangeMovie(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_movieschangeMovie
