@@ -4,7 +4,7 @@
 package com.mycompany.ticket_manager;
 
 import com.mycompany.ticket_manager.view.FrameLogin;
-import com.mycompany.ticket_manager.view.admin.FrameThongKeVeBan;
+import com.mycompany.ticket_manager.view.admin.FrameAddMovie;
 import com.mycompany.ticket_manager.view.admin.Main;
 
 /**
@@ -18,6 +18,8 @@ public class Ticket_manager {
 //        login.setVisible(true);
         Main main = new Main();
         main.setVisible(true);
+//        FrameAddMovie frameAddMovie = new FrameAddMovie();
+//        frameAddMovie.setVisible(true);
         
     }
 }

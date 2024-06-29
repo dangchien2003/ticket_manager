@@ -107,6 +107,11 @@ public class Main extends javax.swing.JFrame {
         jMenu2.add(jSeparator2);
 
         addMovie.setText("Thêm phim");
+        addMovie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clickAddMovie(evt);
+            }
+        });
         jMenu2.add(addMovie);
 
         jMenuBar1.add(jMenu2);
@@ -217,6 +222,11 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.addPanel(new FrameStatisticalMovie());
     }//GEN-LAST:event_clickShowMovie
+
+    private void clickAddMovie(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickAddMovie
+        // TODO add your handling code here:
+        this.addPanel(new FrameAddMovie());
+    }//GEN-LAST:event_clickAddMovie
     private void addPanel(Component panel) {
         jPanel1.setLayout(new BorderLayout());
         jPanel1.removeAll();

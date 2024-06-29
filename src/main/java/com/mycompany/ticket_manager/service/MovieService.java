@@ -7,6 +7,7 @@ package com.mycompany.ticket_manager.service;
 import com.mycompany.ticket_manager.model.Movie;
 import com.mycompany.ticket_manager.model.Response;
 import com.mycompany.ticket_manager.repository.MovieRepository;
+import com.mycompany.ticket_manager.util.NumberUtil;
 import com.mycompany.ticket_manager.util.Timestamp;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class MovieService {
             return new Response<>("Có lỗi xảy ra");
         }
     }
-    
+
     public Response<List<Movie>> getAllMovieOk() {
         try {
             ResultSet resultSet = this.movieRepository.fetchAllDataOk();
@@ -271,6 +272,54 @@ public class MovieService {
             }
 
             return new Response<List<Map<String, String>>>().ok(listMovie);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response<>("Có lỗi xảy ra");
+        }
+    }
+
+    public Response<Movie> checkMovie(Movie movie) {
+        try {
+            if (movie.getName().equals("")) {
+                return new Response<>("Tên phim không hợp lệ");
+            }
+
+            if (movie.getAge() != 2 && movie.getAge() != 16 && movie.getAge() != 18) {
+                return new Response<>("Độ tuổi xem phim không hợp lệ");
+            }
+
+            if (movie.getMinPrice() <= 0 || movie.getMinPrice() > 1000000) {
+                return new Response<>("Giá vé không hợp lệ");
+            }
+
+            if (movie.getTime() <= 0 || movie.getTime() > 600) {
+                return new Response<>("Thời lượng phim không hợp lệ");
+            }
+
+            String id = "MOVIE_" + Timestamp.getNowTimeStamp() + "_" + NumberUtil.genNumber(3);
+            movie.setId(id);
+
+            return new Response<Movie>().ok(movie);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response<>("Có lỗi xảy ra");
+        }
+    }
+
+    public Response<String> addListMovie(List<Movie> listMovie) {
+        try {
+            if (listMovie == null || listMovie.isEmpty()) {
+                return new Response<>("Không có dữ liệu thêm");
+            }
+            
+            long now = Timestamp.getNowTimeStamp();
+            
+            int inserted = this.movieRepository.insertListMovie(listMovie, now);
+            if(inserted == -1){
+                return new Response<>("Không thể thêm phim");
+            }
+            
+            return new Response<String>().ok(listMovie.size()+"/"+listMovie.size());
         } catch (Exception e) {
             e.printStackTrace();
             return new Response<>("Có lỗi xảy ra");

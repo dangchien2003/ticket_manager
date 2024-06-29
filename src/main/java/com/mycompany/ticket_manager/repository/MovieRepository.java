@@ -6,10 +6,12 @@ package com.mycompany.ticket_manager.repository;
 
 import com.mycompany.ticket_manager.helper.ConnectMySQL;
 import com.mycompany.ticket_manager.model.Movie;
+import com.mycompany.ticket_manager.model.Seat;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  *
@@ -215,6 +217,40 @@ public class MovieRepository {
             System.out.println("Lỗi");
             e.printStackTrace();
             return null;
+        }
+    }
+    
+    public int insertListMovie(List<Movie> dataList, long now) {
+        String sql = "INSERT INTO movie(id, name, age, minPrice, createAt, time) VALUES(?, ?, ?, ?, ?, ?)";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            connection.setAutoCommit(false); 
+            for (Movie data : dataList) {
+                preparedStatement.setString(1, data.getId());
+                preparedStatement.setString(2, data.getName());
+                preparedStatement.setInt(3, data.getAge());
+                preparedStatement.setInt(4, data.getMinPrice());
+                preparedStatement.setLong(5, now);
+                preparedStatement.setInt(6, data.getTime());
+                preparedStatement.addBatch(); // Add to batch
+            }
+            int[] rowsInserted = preparedStatement.executeBatch();
+            for(int i:rowsInserted){
+                if(i <= 0){
+                    connection.rollback();
+                    throw new SQLException("Lỗi thêm ít nhất 1 dữ liệu");
+                }
+            }
+            connection.commit();
+            return 1;
+        } catch (SQLException e) {
+            System.out.println("here"); 
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return -1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
         }
     }
 }

@@ -437,7 +437,7 @@ public class FrameInfoCalendar extends javax.swing.JPanel {
 
         this.find();
 
-        JOptionPane.showMessageDialog(null, "Cập nhật thành công", "Thông báo lỗi", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Cập nhật thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_editclickAddCalendar
 
     private void cancleclickCancle(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancleclickCancle
@@ -447,7 +447,7 @@ public class FrameInfoCalendar extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, response.getMessage(), "Thông báo lỗi", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        JOptionPane.showMessageDialog(null, "Huỷ thành công", "Thông báo lỗi", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Huỷ thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         this.id.setText("");
         this.find();
     }//GEN-LAST:event_cancleclickCancle

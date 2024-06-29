@@ -49,5 +49,11 @@ public class MovieController {
     public Response<List<Map<String, String>>> getMovieInDate(long timestamp) {
         return this.movieService.getMovieInDate(timestamp);
     }
+    public Response<Movie> checkMovie(Movie movie) {
+        return this.movieService.checkMovie(movie);
+    }
+    public Response<String> addListMovie(List<Movie> listMovie) {
+        return this.movieService.addListMovie(listMovie);
+    }
 
 }
