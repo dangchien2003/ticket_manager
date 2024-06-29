@@ -108,6 +108,11 @@ public class Main extends javax.swing.JFrame {
         jMenu3.setText("Lịch chiếu");
 
         jMenuItem3.setText("Tất cả lịch");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clickAllCalendar(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
         jMenu3.add(jSeparator3);
 
@@ -159,6 +164,11 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.addPanel(new FrameAddCalendar());
     }//GEN-LAST:event_clickAddCalendar
+
+    private void clickAllCalendar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickAllCalendar
+        // TODO add your handling code here:
+        this.addPanel(new FrameInfoCalendar());
+    }//GEN-LAST:event_clickAllCalendar
     private void addPanel(Component panel) {
         jPanel1.setLayout(new BorderLayout());
         jPanel1.removeAll();

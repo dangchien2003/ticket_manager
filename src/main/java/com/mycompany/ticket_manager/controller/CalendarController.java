@@ -32,8 +32,17 @@ public class CalendarController {
     public Response<List<Map<String, Object>>> getCalendar(long date, String selectedRoom) {
         return this.calendarService.getCalendar(date, selectedRoom);
     }
+
     public Response<Map<String, Object>> addCalendar(String playAt, String room, String movie) {
         return this.calendarService.addCalendar(playAt, room, movie);
+    }
+
+    public Response<Boolean> cancleCalendar(String id) {
+        return this.calendarService.cancleCalendar(id);
+    }
+    
+    public Response<Map<String, Object>> updatedCalendar(String id, String playAt, String room, String movie) {
+        return this.calendarService.updateCalendar(id, playAt, room, movie);
     }
 
 }

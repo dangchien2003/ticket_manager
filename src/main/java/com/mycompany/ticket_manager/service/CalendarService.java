@@ -10,6 +10,7 @@ import com.mycompany.ticket_manager.repository.MovieRepository;
 import com.mycompany.ticket_manager.util.NumberUtil;
 import com.mycompany.ticket_manager.util.Timestamp;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -141,7 +142,7 @@ public class CalendarService {
         }
     }
 
-    public Response<Map<String, Object>> addCalendar(String playAt, String room, String movie) {
+    public Response<Map<String, Object>> checkCalendar(String playAt, String room, String movie, String idCalendar) {
         try {
             long timePlay = Timestamp.convertTimeToTimestamp(playAt, "HH:mm:ss dd-MM-yyyy");
 
@@ -176,10 +177,87 @@ public class CalendarService {
             if (resultSet == null) {
                 return new Response<>("Lỗi lấy dữ liệu");
             }
-            resultSet.next(); 
+            resultSet.next();
             if (resultSet.getRow() == 1) {
-                return new Response<>("Trùng lịch chiếu");
+                if (idCalendar != null) {
+                    if (!resultSet.getString("id").equals(idCalendar)) {
+                        return new Response<>("Trùng lịch chiếu");
+                    } else {
+                        resultSet.next();
+                        if (resultSet.getRow() == 2) {
+                            return new Response<>("Trùng lịch chiếu");
+                        }
+                    }
+                } else {
+                    return new Response<>("Trùng lịch chiếu");
+
+                }
             }
+            return new Response<Map<String, Object>>().ok(new HashMap<>() {
+                {
+                    put("timePlay", timePlay);
+                    put("roomPlay", roomPlay);
+                    put("nameMovie", nameMovie);
+                    put("timeMovie", timeMovie);
+                    put("timeEnd", timeEnd);
+                }
+            });
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new Response<>("Có lỗi xảy ra");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response<>("Có lỗi xảy ra");
+        }
+    }
+
+    public Response<Map<String, Object>> updateCalendar(String id, String playAt, String room, String movie) {
+        try {
+            id = id.trim();
+            if (id.length() == 0) {
+                return new Response<>("Không tìm thấy id");
+            }
+
+            Response<Map<String, Object>> responseCheck = this.checkCalendar(playAt, room, movie, id);
+
+            if (responseCheck.getSuccess() == false) {
+                return responseCheck;
+            }
+            long timePlay = (long) responseCheck.getData().get("timePlay");
+            String roomPlay = responseCheck.getData().get("roomPlay").toString();
+            String nameMovie = responseCheck.getData().get("nameMovie").toString();
+            int timeMovie = (int) responseCheck.getData().get("timeMovie");
+            long timeEnd = (long) responseCheck.getData().get("timeEnd");
+
+            int updated = this.calendarRepository.updateCalendar(id, movie, timePlay, roomPlay);
+
+            if (updated == -1) {
+                return new Response<>("Lỗi truy vấn dữ liệu");
+            }
+
+            if (updated == 0) {
+                return new Response<>("Cập nhật thất bại");
+            }
+
+            return new Response<Map<String, Object>>().ok(null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response<>("Có lỗi xảy ra");
+        }
+    }
+
+    public Response<Map<String, Object>> addCalendar(String playAt, String room, String movie) {
+        try {
+            Response<Map<String, Object>> responseCheck = this.checkCalendar(playAt, room, movie, null);
+
+            if (responseCheck.getSuccess() == false) {
+                return responseCheck;
+            }
+            long timePlay = (long) responseCheck.getData().get("timePlay");
+            String roomPlay = responseCheck.getData().get("roomPlay").toString();
+            String nameMovie = responseCheck.getData().get("nameMovie").toString();
+            int timeMovie = (int) responseCheck.getData().get("timeMovie");
+            long timeEnd = (long) responseCheck.getData().get("timeEnd");
 
             String idCalendar = "CALENDAR_" + Timestamp.getNowTimeStamp() + "_" + NumberUtil.genNumber(3);
 
@@ -204,6 +282,32 @@ public class CalendarService {
                     put("id", idCalendar);
                 }
             });
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response<>("Có lỗi xảy ra");
+        }
+    }
+
+    public Response<Boolean> cancleCalendar(String id) {
+        try {
+            id = id.trim();
+            if (id.length() == 0) {
+                return new Response<>("Không tìm thấy id");
+            }
+
+            long cancleAt = Timestamp.getNowTimeStamp();
+
+            int updated = this.calendarRepository.setCancleAt(id, cancleAt);
+
+            if (updated == -1) {
+                return new Response<>("Lỗi truy vấn dữ liệu");
+            }
+
+            if (updated == 0) {
+                return new Response<>("Không thể huỷ");
+            }
+
+            return new Response<Boolean>().ok(true);
         } catch (Exception e) {
             e.printStackTrace();
             return new Response<>("Có lỗi xảy ra");
