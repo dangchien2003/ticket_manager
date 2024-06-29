@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.ticket_manager.view.admin;
+
 import com.mycompany.ticket_manager.controller.MovieController;
 import com.mycompany.ticket_manager.model.Movie;
 import com.mycompany.ticket_manager.model.Response;
@@ -12,6 +13,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author chien
@@ -21,7 +23,7 @@ public class FrameAddMovie extends javax.swing.JPanel {
     /**
      * Creates new form FrameAddMovie1
      */
-     List<Movie> listMovie;
+    List<Movie> listMovie;
     MovieController movieController;
 
     /**
@@ -369,7 +371,7 @@ public class FrameAddMovie extends javax.swing.JPanel {
         this.listMovie = new ArrayList<>();
         DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
         tableModel.setRowCount(0);
-        JOptionPane.showMessageDialog(null,"Thêm thành công "+response.getData(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Thêm thành công " + response.getData(), "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_addAllclickAddAll
 
     private void deleteclickDelete(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteclickDelete
@@ -393,6 +395,20 @@ public class FrameAddMovie extends javax.swing.JPanel {
     private void jButton4clickAddMovie(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4clickAddMovie
         // TODO add your handling code here:
         Movie movie = this.getMovie();
+        boolean movieExist = false;
+        for (Movie movieInList : this.listMovie) {
+            if (movieInList.getName().equals(movie.getName())) {
+
+                movieExist = true;
+                break;
+            }
+        }
+
+        if (movieExist == true) {
+            JOptionPane.showMessageDialog(null, "Phim đã tồn tại", "Thông báo lỗi", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         Response<Movie> response = this.movieController.checkMovie(movie);
 
         if (response.getSuccess() == false) {

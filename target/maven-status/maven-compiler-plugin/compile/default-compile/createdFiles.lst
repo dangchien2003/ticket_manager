@@ -4,7 +4,6 @@ com\mycompany\ticket_manager\view\staff\BuyTicket$11.class
 com\mycompany\ticket_manager\view\admin\FrameAddMovie$6.class
 com\mycompany\ticket_manager\view\admin\FrameAddStaff$2.class
 com\mycompany\ticket_manager\view\admin\FrameInfoMovie$3.class
-com\mycompany\ticket_manager\view\admin\FrameAddMovie1.class
 com\mycompany\ticket_manager\view\admin\FrameInfoStaff$4.class
 com\mycompany\ticket_manager\view\staff\ConfirmTicket.class
 com\mycompany\ticket_manager\view\admin\FrameInfoMovie$6.class
@@ -15,7 +14,6 @@ com\mycompany\ticket_manager\view\admin\FrameStatisticalTicket$2.class
 com\mycompany\ticket_manager\repository\CalendarRepository.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$2.class
 com\mycompany\ticket_manager\controller\MovieController.class
-com\mycompany\ticket_manager\view\admin\FrameAddMovie1$4.class
 com\mycompany\ticket_manager\view\admin\Main$6.class
 com\mycompany\ticket_manager\service\MovieService.class
 com\mycompany\ticket_manager\view\admin\FrameAddCalendar$5.class
@@ -34,8 +32,6 @@ com\mycompany\ticket_manager\view\admin\FrameInfoStaff$5.class
 com\mycompany\ticket_manager\view\staff\ConfirmTicket$2.class
 com\mycompany\ticket_manager\view\admin\FrameStatisticalRevenue.class
 com\mycompany\ticket_manager\service\TicketService$1.class
-com\mycompany\ticket_manager\view\admin\FrameAddMovie$7.class
-com\mycompany\ticket_manager\view\admin\FrameAddMovie1$1.class
 com\mycompany\ticket_manager\view\admin\FrameStatisticalRevenue$1.class
 com\mycompany\ticket_manager\repository\SeatRepository.class
 com\mycompany\ticket_manager\view\admin\FrameAddMovie$1.class
@@ -56,7 +52,6 @@ com\mycompany\ticket_manager\view\admin\FrameAddCalendar$4.class
 com\mycompany\ticket_manager\service\StatisticalTicketService.class
 com\mycompany\ticket_manager\controller\CalendarController.class
 com\mycompany\ticket_manager\view\admin\FrameAddMovie.class
-com\mycompany\ticket_manager\view\admin\FrameAddMovie1$2.class
 com\mycompany\ticket_manager\view\admin\FrameInfoMovie$4.class
 com\mycompany\ticket_manager\view\admin\Main$4.class
 com\mycompany\ticket_manager\controller\TicketController.class
@@ -64,7 +59,6 @@ com\mycompany\ticket_manager\service\CalendarService.class
 com\mycompany\ticket_manager\view\admin\FrameInfoCalendar.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$6.class
 com\mycompany\ticket_manager\view\admin\FrameInfoCalendar$6.class
-com\mycompany\ticket_manager\view\admin\FrameAddMovie1$3.class
 com\mycompany\ticket_manager\view\admin\FrameInfoMovie$7.class
 com\mycompany\ticket_manager\view\admin\FrameStatisticalTicket.class
 com\mycompany\ticket_manager\view\admin\Main$7.class
@@ -74,7 +68,6 @@ com\mycompany\ticket_manager\view\staff\BuyTicket$9.class
 com\mycompany\ticket_manager\view\admin\FrameAddCalendar$1.class
 com\mycompany\ticket_manager\view\admin\FrameInfoCalendar$3.class
 com\mycompany\ticket_manager\view\staff\BuyTicket.class
-com\mycompany\ticket_manager\view\admin\FrameAddMovie1$6.class
 com\mycompany\ticket_manager\repository\StaffRepository.class
 com\mycompany\ticket_manager\controller\SeatController.class
 com\mycompany\ticket_manager\repository\MovieRepository.class
@@ -85,7 +78,6 @@ com\mycompany\ticket_manager\view\admin\FrameAddStaff$1.class
 com\mycompany\ticket_manager\service\SeatService.class
 com\mycompany\ticket_manager\view\admin\Main$9.class
 com\mycompany\ticket_manager\view\admin\FrameAddMovie$4.class
-com\mycompany\ticket_manager\view\admin\FrameAddMovie1$5.class
 com\mycompany\ticket_manager\view\admin\FrameAddCalendar$6.class
 com\mycompany\ticket_manager\view\admin\FrameInfoStaff.class
 com\mycompany\ticket_manager\view\admin\FrameInfoCalendar$8.class

@@ -295,7 +295,14 @@ public class MovieService {
             if (movie.getTime() <= 0 || movie.getTime() > 600) {
                 return new Response<>("Thời lượng phim không hợp lệ");
             }
-
+            
+            ResultSet resultSet = this.movieRepository.getMovieByName(movie.getName());
+            
+            resultSet.next();
+            if(resultSet.getRow() == 1){
+                return new Response<>("Tên phim đã tồn tại");
+            }
+            
             String id = "MOVIE_" + Timestamp.getNowTimeStamp() + "_" + NumberUtil.genNumber(3);
             movie.setId(id);
 

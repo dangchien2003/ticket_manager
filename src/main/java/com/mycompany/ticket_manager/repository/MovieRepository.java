@@ -151,6 +151,23 @@ public class MovieRepository {
             return null;
         }
     }
+    
+    public ResultSet getMovieByName(String name) {
+        String sql = "select * from movie where name = ? order by createAt";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, name);
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return null;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public ResultSet findByName(String name) {
         String sql = "select * from movie where name like '%" + name + "%' order by createAt";
