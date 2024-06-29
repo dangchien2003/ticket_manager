@@ -72,6 +72,8 @@ public class FrameInfoCalendar extends javax.swing.JPanel {
         String selectedRoom = this.cbb_room.getSelectedItem().toString();
         Response<List<Map<String, Object>>> response = this.calendarController.getCalendar(date, selectedRoom);
         if (response.getSuccess() == false) {
+            DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+            tableModel.setRowCount(0);
             JOptionPane.showMessageDialog(null, response.getMessage(), "Thông báo lỗi", JOptionPane.WARNING_MESSAGE);
             return;
         }
