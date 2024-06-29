@@ -242,7 +242,6 @@ public class FrameStatisticalMovie extends javax.swing.JPanel {
 
     private void jButton1clickFind(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1clickFind
         // TODO add your handling code here:
-        String idMovie = this.listMovie.get(this.movies.getSelectedIndex()).getId();
         String day = this.format(String.valueOf(this.day.getDay()));
         String month = this.format(this.month.getSelectedItem().toString());
         String year = String.valueOf(this.year.getValue());

@@ -4,6 +4,7 @@
 package com.mycompany.ticket_manager;
 
 import com.mycompany.ticket_manager.view.FrameLogin;
+import com.mycompany.ticket_manager.view.admin.FrameThongKeVeBan;
 import com.mycompany.ticket_manager.view.admin.Main;
 
 /**

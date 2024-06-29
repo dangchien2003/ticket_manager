@@ -210,7 +210,7 @@ public class Main extends javax.swing.JFrame {
 
     private void clickShowBuyTicket(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickShowBuyTicket
         // TODO add your handling code here:
-        this.addPanel(new FrameInfoCalendar());
+        this.addPanel(new FrameStatisticalTicket());
     }//GEN-LAST:event_clickShowBuyTicket
 
     private void clickShowMovie(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickShowMovie

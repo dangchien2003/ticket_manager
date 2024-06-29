@@ -46,6 +46,26 @@ public class StatisticalRepository {
             return null;
         }
     }
+
+    public ResultSet ticket(long timeStart, long timeEnd) {
+        String sql = "select createAt, priceTicket from ticket where createAt between ? and ? order by createAt";
+
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setLong(1, timeStart);
+            preparedStatement.setLong(2, timeEnd);
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return null;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public ResultSet movie(long timeStart, long timeEnd, String movie) {
         String sql = "select ticket.createAt, priceTicket from ticket join calendar on calendar.id = ticket.idCalendar join movie on calendar.idMovie = movie.id where ticket.createAt between ? and ? and idMovie = ? order by ticket.createAt";
 
