@@ -292,17 +292,21 @@ public class MovieService {
                 return new Response<>("Giá vé không hợp lệ");
             }
 
-            if (movie.getTime() <= 0 || movie.getTime() > 600) {
-                return new Response<>("Thời lượng phim không hợp lệ");
+            if (movie.getTime() < 45) {
+                return new Response<>("Thời lượng phim quá ngắn");
             }
-            
+
+            if (movie.getTime() > 180) {
+                return new Response<>("Thời lượng phim quá dài");
+            }
+
             ResultSet resultSet = this.movieRepository.getMovieByName(movie.getName());
-            
+
             resultSet.next();
-            if(resultSet.getRow() == 1){
+            if (resultSet.getRow() == 1) {
                 return new Response<>("Tên phim đã tồn tại");
             }
-            
+
             String id = "MOVIE_" + Timestamp.getNowTimeStamp() + "_" + NumberUtil.genNumber(3);
             movie.setId(id);
 
@@ -318,15 +322,15 @@ public class MovieService {
             if (listMovie == null || listMovie.isEmpty()) {
                 return new Response<>("Không có dữ liệu thêm");
             }
-            
+
             long now = Timestamp.getNowTimeStamp();
-            
+
             int inserted = this.movieRepository.insertListMovie(listMovie, now);
-            if(inserted == -1){
+            if (inserted == -1) {
                 return new Response<>("Không thể thêm phim");
             }
-            
-            return new Response<String>().ok(listMovie.size()+"/"+listMovie.size());
+
+            return new Response<String>().ok(listMovie.size() + "/" + listMovie.size());
         } catch (Exception e) {
             e.printStackTrace();
             return new Response<>("Có lỗi xảy ra");
