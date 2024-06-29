@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.ticket_manager.view.admin;
 
@@ -21,18 +21,18 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Admin
+ * @author chien
  */
-public class FrameAddLichChieu extends javax.swing.JFrame {
+public class FrameAddCalendar extends javax.swing.JPanel {
 
     /**
-     * Creates new form FrameAddLichChieu
+     * Creates new form FrameAddCalendar
      */
     CalendarController calendarController;
     MovieController movieController;
     List<Movie> listMovie = new ArrayList<>();
 
-    public FrameAddLichChieu() {
+    public FrameAddCalendar() {
         initComponents();
         this.movieController = new MovieController();
         this.calendarController = new CalendarController();
@@ -106,8 +106,6 @@ public class FrameAddLichChieu extends javax.swing.JFrame {
         timeEnd = new javax.swing.JSpinner(smt);
         room = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("DANH SÁCH LỊCH CHIẾU");
 
@@ -118,7 +116,7 @@ public class FrameAddLichChieu extends javax.swing.JFrame {
         cbb_room.setPreferredSize(new java.awt.Dimension(82, 32));
         cbb_room.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                changeRoom(evt);
+                cbb_roomchangeRoom(evt);
             }
         });
 
@@ -137,7 +135,7 @@ public class FrameAddLichChieu extends javax.swing.JFrame {
         jButton1.setText("Tìm kiếm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clickFindCalendar(evt);
+                jButton1clickFindCalendar(evt);
             }
         });
 
@@ -151,7 +149,7 @@ public class FrameAddLichChieu extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
+            .addGap(0, 463, Short.MAX_VALUE)
         );
 
         datePlay.setDateFormatString("dd-MM-yyyy");
@@ -168,7 +166,7 @@ public class FrameAddLichChieu extends javax.swing.JFrame {
         jButton2.setText("Thêm");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clickAddCalendar(evt);
+                jButton2clickAddCalendar(evt);
             }
         });
 
@@ -194,7 +192,7 @@ public class FrameAddLichChieu extends javax.swing.JFrame {
 
         movies.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                changeMovie(evt);
+                movieschangeMovie(evt);
             }
         });
 
@@ -202,7 +200,7 @@ public class FrameAddLichChieu extends javax.swing.JFrame {
         timeStart.setEditor(de);
         timeStart.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                changeTimeStart(evt);
+                timeStartchangeTimeStart(evt);
             }
         });
 
@@ -308,62 +306,65 @@ public class FrameAddLichChieu extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(207, 207, 207)))
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(45, 45, 45)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(find_calendar, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                            .addComponent(cbb_room, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(131, 131, 131)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(672, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cbb_room, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(42, 42, 42)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(find_calendar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 7, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(20, 20, 20)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(30, 30, 30)
-                    .addComponent(find_calendar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29)
-                    .addComponent(cbb_room, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(361, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(24, 24, 24)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(26, 26, 26)
+                            .addComponent(find_calendar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cbb_room, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void clickFindCalendar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickFindCalendar
+    private void cbb_roomchangeRoom(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbb_roomchangeRoom
+        // TODO add your handling code here:
+        if (evt.getStateChange() == ItemEvent.DESELECTED) {
+            return;
+        }
+        this.room.setText(this.cbb_room.getSelectedItem().toString());
+    }//GEN-LAST:event_cbb_roomchangeRoom
+
+    private void jButton1clickFindCalendar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1clickFindCalendar
         // TODO add your handling code here:
         long date = this.find_calendar.getDate().getTime() / 1000;
         String selectedRoom = this.cbb_room.getSelectedItem().toString();
@@ -382,33 +383,23 @@ public class FrameAddLichChieu extends javax.swing.JFrame {
             Object[] data = {row.get("nameMovie"), "P" + row.get("room"), row.get("datePlay"), row.get("timeStart"), row.get("timeEnd")};
             tableModel.addRow(data);
         }
-    }//GEN-LAST:event_clickFindCalendar
+    }//GEN-LAST:event_jButton1clickFindCalendar
 
-    private void changeRoom(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_changeRoom
-        // TODO add your handling code here:
-        if (evt.getStateChange() == ItemEvent.DESELECTED) {
-            return;
+    private String format(String string) {
+        if (string.length() == 1) {
+            string = "0" + string;
         }
-        this.room.setText(this.cbb_room.getSelectedItem().toString());
-    }//GEN-LAST:event_changeRoom
-
-    private void changeTimeStart(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_changeTimeStart
-        // TODO add your handling code here:
-        this.setTimeEnd();
-    }//GEN-LAST:event_changeTimeStart
-
-    private void clickAddCalendar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickAddCalendar
+        return string;
+    }
+    private void jButton2clickAddCalendar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2clickAddCalendar
         // TODO add your handling code here:
         Date date = this.datePlay.getDate();
-        String year = String.valueOf((date.getYear() + 1900));
-        String month = String.valueOf(date.getMonth() + 1).length() == 2 ? String.valueOf(date.getMonth() + 1) : "0" + String.valueOf(date.getMonth() + 1);
-        String day = String.valueOf(date.getDate()).length() == 2 ? String.valueOf(date.getDate()) : "0" + String.valueOf(date.getDate());
+        String year = this.format(String.valueOf((date.getYear() + 1900)));
+        String month = this.format(String.valueOf(date.getMonth() + 1));
+        String day = this.format(String.valueOf(date.getDate()));
         Date time = (Date) this.timeStart.getValue();
-        String hours = String.valueOf(time.getHours()).length() == 2 ? String.valueOf(date.getHours()) : "0" + String.valueOf(time.getHours());
-        String minutes = String.valueOf(time.getMinutes());
-        if (minutes.length() == 1) {
-            minutes = "0" + minutes;
-        }
+        String hours = this.format(String.valueOf(time.getHours()));
+        String minutes = this.format(String.valueOf(time.getMinutes()));
         String playAt = hours + ":" + minutes + ":00 " + day + "-" + month + "-" + year;
         String room = this.room.getText();
         String movie = this.listMovie.get(this.movies.getSelectedIndex()).getId();
@@ -424,47 +415,18 @@ public class FrameAddLichChieu extends javax.swing.JFrame {
         Object[] data = {calendar.get("nameMovie"), "P" + calendar.get("room"), calendar.get("datePlay"), calendar.get("timeStart"), calendar.get("timeEnd")};
         tableModel.addRow(data);
         JOptionPane.showMessageDialog(null, "Tạo thành công", "Thông báo lỗi", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_clickAddCalendar
+    }//GEN-LAST:event_jButton2clickAddCalendar
 
-    private void changeMovie(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_changeMovie
+    private void movieschangeMovie(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_movieschangeMovie
         // TODO add your handling code here:
         this.setTimeEnd();
-    }//GEN-LAST:event_changeMovie
+    }//GEN-LAST:event_movieschangeMovie
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameAddLichChieu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameAddLichChieu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameAddLichChieu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameAddLichChieu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void timeStartchangeTimeStart(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_timeStartchangeTimeStart
+        // TODO add your handling code here:
+        this.setTimeEnd();
+    }//GEN-LAST:event_timeStartchangeTimeStart
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrameAddLichChieu().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbb_room;

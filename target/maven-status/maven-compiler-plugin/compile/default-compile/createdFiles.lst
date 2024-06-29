@@ -12,11 +12,15 @@ com\mycompany\ticket_manager\view\staff\BuyTicket$2.class
 com\mycompany\ticket_manager\controller\MovieController.class
 com\mycompany\ticket_manager\view\admin\FrameAddLichChieu.class
 com\mycompany\ticket_manager\service\MovieService.class
+com\mycompany\ticket_manager\view\admin\FrameAddCalendar$5.class
 com\mycompany\ticket_manager\model\Staff.class
 com\mycompany\ticket_manager\controller\StaffController.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$8.class
 com\mycompany\ticket_manager\repository\TicketRepository.class
+com\mycompany\ticket_manager\view\admin\FrameAddCalendar$2.class
+com\mycompany\ticket_manager\view\admin\FrameAddCalendar$3.class
 com\mycompany\ticket_manager\view\admin\FrameinfoLichChieu.class
+com\mycompany\ticket_manager\view\admin\FrameAddCalendar.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$1.class
 com\mycompany\ticket_manager\view\admin\FrameInfoMovie$5.class
 com\mycompany\ticket_manager\view\admin\FrameInfoStaff$5.class
@@ -25,10 +29,12 @@ com\mycompany\ticket_manager\service\TicketService$1.class
 com\mycompany\ticket_manager\view\admin\FrameAddLichChieu$1.class
 com\mycompany\ticket_manager\repository\SeatRepository.class
 com\mycompany\ticket_manager\view\admin\FrameAddStaff.class
+com\mycompany\ticket_manager\view\admin\Main$5.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$10.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$7.class
 com\mycompany\ticket_manager\service\TicketService$2.class
 com\mycompany\ticket_manager\view\staff\ConfirmTicket$1.class
+com\mycompany\ticket_manager\view\admin\FrameAddCalendar$4.class
 com\mycompany\ticket_manager\controller\CalendarController.class
 com\mycompany\ticket_manager\view\admin\FrameInfoMovie$4.class
 com\mycompany\ticket_manager\view\admin\Main$4.class
@@ -39,6 +45,7 @@ com\mycompany\ticket_manager\view\admin\FrameInfoMovie$7.class
 com\mycompany\ticket_manager\view\admin\FrameAddLichChieu$2.class
 com\mycompany\ticket_manager\service\CalendarService$1.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$9.class
+com\mycompany\ticket_manager\view\admin\FrameAddCalendar$1.class
 com\mycompany\ticket_manager\view\staff\BuyTicket.class
 com\mycompany\ticket_manager\repository\StaffRepository.class
 com\mycompany\ticket_manager\controller\SeatController.class
