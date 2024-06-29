@@ -38,7 +38,7 @@ public class TicketController {
         return this.ticketService.checkInfo(ticket, chairs);
     }
     
-    public Response<Boolean> addTicket(Ticket ticket, List<String> chairs){
-        return this.ticketService.addTicket(ticket, chairs);
+    public Response<Boolean> addTicket(Ticket ticket, List<String> chairs, String nameMovie, String playAt){
+        return this.ticketService.addTicket(ticket, chairs, nameMovie, playAt);
     }
 }

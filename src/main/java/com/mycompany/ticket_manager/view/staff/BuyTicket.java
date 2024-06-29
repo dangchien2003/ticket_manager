@@ -512,6 +512,9 @@ public class BuyTicket extends javax.swing.JFrame {
 
     private void clickChooseChair(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickChooseChair
         // TODO add your handling code here:
+        this.listSelectedChair = new ArrayList<String>();
+        this.chairs.setText("");
+        this.priceChair.setText("0 đ");
         int calendarIndex = this.calendar_combobox.getSelectedIndex();
         if (calendarIndex <= 0) {
             return;

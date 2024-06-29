@@ -1,4 +1,8 @@
-package com.mycompany.ticket_manager.service;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.ticket_manager.repository;
 
 import java.util.Properties;
 import javax.mail.Message;
@@ -9,19 +13,18 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import io.github.cdimascio.dotenv.Dotenv;
-import java.io.UnsupportedEncodingException;
 
 /**
  *
  * @author chien
  */
-public class MailService extends Thread {
+public class MailRepository extends Thread {
 
     private String from;
     private String password;
     private String author;
 
-    public MailService() {
+    public MailRepository() {
         Dotenv dotenv = Dotenv.load();
         from = dotenv.get("EMAIL");
         password = dotenv.get("PASSWORD");
@@ -50,14 +53,12 @@ public class MailService extends Thread {
             public void run() {
                 try {
                     Message msg = new MimeMessage(s);
-                    msg.setFrom(new InternetAddress(from, author));
+                    msg.setFrom(new InternetAddress(from));
                     msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
                     msg.setSubject(subject);
-                    msg.setContent(body, "text/html; charset=UTF-8");
+                    msg.setText(body);
                     Transport.send(msg);
                 } catch (MessagingException ex) {
-                    ex.printStackTrace();
-                }catch(UnsupportedEncodingException ex){
                     ex.printStackTrace();
                 }
             }

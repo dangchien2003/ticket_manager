@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ticket</title>
+    </head>
+
+    <body>
+        <h1 style="text-align: center;">Vé phim</h1>
+        <p th:text="'Bạn đã mua thành công vé xem phim: ' + ${movie}"></p>
+        <p th:text="'Thời gian chiếu: ' + ${calendar}"></p>
+        <p th:text="'Mã ghế: ' + ${chairs}"></p>
+        <p th:text="'Hãy đưa mã này cho nhân viên khi đến xem: ' + ${ticket}"></p>
+        <p style="text-align: center; display: inline-block;">Thân gửi khách hàng<br><span
+                style="font-weight: bold; line-height: 40px; font-size: 18px" th:text="${customer}"></span></p>
+        <div style="text-align: center;">
+            <img th:src="'https://api.qrserver.com/v1/create-qr-code/?data='+ ${ticket} + '&size=250x250'" alt="QR Code">
+        </div>
+    </body>
+
+</html>
