@@ -6,6 +6,7 @@ package com.mycompany.ticket_manager.view.admin;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import com.mycompany.ticket_manager.view.admin.FrameStatisticalRevenue;
 
 /**
  *
@@ -45,6 +46,11 @@ public class Main extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        revenue = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        buyTicket = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
+        movie = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,6 +133,33 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Thống kê");
+
+        revenue.setText("Doanh thu");
+        revenue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clickShowRevenue(evt);
+            }
+        });
+        jMenu4.add(revenue);
+        jMenu4.add(jSeparator4);
+
+        buyTicket.setText("Vé bán");
+        buyTicket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clickShowBuyTicket(evt);
+            }
+        });
+        jMenu4.add(buyTicket);
+        jMenu4.add(jSeparator5);
+
+        movie.setText("Phim chiếu");
+        movie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clickShowMovie(evt);
+            }
+        });
+        jMenu4.add(movie);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -169,6 +202,21 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.addPanel(new FrameInfoCalendar());
     }//GEN-LAST:event_clickAllCalendar
+
+    private void clickShowRevenue(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickShowRevenue
+        // TODO add your handling code here:
+        this.addPanel(new FrameStatisticalRevenue());
+    }//GEN-LAST:event_clickShowRevenue
+
+    private void clickShowBuyTicket(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickShowBuyTicket
+        // TODO add your handling code here:
+        this.addPanel(new FrameInfoCalendar());
+    }//GEN-LAST:event_clickShowBuyTicket
+
+    private void clickShowMovie(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clickShowMovie
+        // TODO add your handling code here:
+        this.addPanel(new FrameStatisticalMovie());
+    }//GEN-LAST:event_clickShowMovie
     private void addPanel(Component panel) {
         jPanel1.setLayout(new BorderLayout());
         jPanel1.removeAll();
@@ -214,6 +262,7 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addMovie;
     private javax.swing.JMenuItem allMovie;
+    private javax.swing.JMenuItem buyTicket;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -228,5 +277,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JMenuItem movie;
+    private javax.swing.JMenuItem revenue;
     // End of variables declaration//GEN-END:variables
 }

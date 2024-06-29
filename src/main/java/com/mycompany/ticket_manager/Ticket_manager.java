@@ -17,5 +17,6 @@ public class Ticket_manager {
 //        login.setVisible(true);
         Main main = new Main();
         main.setVisible(true);
+        
     }
 }
