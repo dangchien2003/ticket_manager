@@ -26,7 +26,6 @@ E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\repository\CalendarRepository.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\service\RenderService.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\model\Seat.java
-E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\readQr.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\controller\TicketController.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\repository\StaffRepository.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\model\Ticket.java
@@ -39,6 +38,7 @@ E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\view\staff\BuyTicket.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\repository\SeatRepository.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\util\Timestamp.java
+E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\view\staff\readQr.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\service\SeatService.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\service\MovieService.java
 E:\DH_CNDA\CNJAVA\BTL\ticket_manager\src\main\java\com\mycompany\ticket_manager\view\admin\FrameInfoCalendar.java

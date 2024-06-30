@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.ticket_manager;
+package com.mycompany.ticket_manager.view.staff;
 
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
@@ -44,7 +44,7 @@ public class readQr extends javax.swing.JFrame implements Runnable, ThreadFactor
 
     private void initWebcam() {
         Dimension size = WebcamResolution.QQVGA.getSize();
-        webcam = Webcam.getWebcams().get(1);
+        webcam = Webcam.getWebcams().get(4);
         webcam.setViewSize(size);
 
         panel = new WebcamPanel(webcam);

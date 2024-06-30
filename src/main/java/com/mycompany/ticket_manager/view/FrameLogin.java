@@ -8,7 +8,7 @@ import com.mycompany.ticket_manager.controller.StaffController;
 import com.mycompany.ticket_manager.model.CurrentStaff;
 import com.mycompany.ticket_manager.model.Login;
 import com.mycompany.ticket_manager.model.Response;
-import com.mycompany.ticket_manager.readQr;
+import com.mycompany.ticket_manager.view.staff.readQr;
 import com.mycompany.ticket_manager.view.admin.Main;
 import com.mycompany.ticket_manager.view.staff.BuyTicket;
 

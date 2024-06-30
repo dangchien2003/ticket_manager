@@ -170,7 +170,7 @@ public class MovieService {
                 resultSet = this.movieRepository.findById(id);
 
             } else if (name.length() > 0) {
-                resultSet = this.movieRepository.findByName(id);
+                resultSet = this.movieRepository.findByName(name);
             } else {
                 return new Response<>("Không thấy dữ liệu tìm kiếm");
             }
