@@ -8,6 +8,7 @@ import com.mycompany.ticket_manager.helper.ConnectMySQL;
 import com.mycompany.ticket_manager.model.Ticket;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -53,6 +54,41 @@ public class TicketRepository {
         } catch (Exception e) {
             e.printStackTrace();
             return -1;
+        }
+    }
+    public int checkIn(String id, long time, String staff) {
+        String sql = "update ticket set checkinAt = ?, checkinBy = ? where id = ?";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setLong(1, time);
+            preparedStatement.setString(2, staff);
+            preparedStatement.setString(3, id);
+            int rowsInserted = preparedStatement.executeUpdate();
+            return rowsInserted;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return -1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+    
+    public ResultSet getInfoTicket(String id) {
+        String sql = "select ticket.id, calendar.time, calendar.room, ticket.numPerson, ticket.numPopcorn, ticket.numWater, ticket.checkinAt, movie.time as timeMovie from ticket join calendar on calendar.id = ticket.idCalendar join movie on calendar.idMovie = movie.id where ticket.id = ?";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return null;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            e.printStackTrace();
+            return null;
         }
     }
 }

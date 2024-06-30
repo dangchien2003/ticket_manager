@@ -210,4 +210,73 @@ public class TicketService {
         }
     }
 
+    public Response<Map<String, String>> getInfoTicket(String id) {
+        try {
+            if (id == "") {
+                return new Response<>("Không tìm thấy vé");
+            }
+
+            ResultSet resultSet = this.ticketRepository.getInfoTicket(id);
+            resultSet.next();
+            if (resultSet.getRow() == 0) {
+                return new Response<>("Không tìm thấy vé");
+            }
+
+            if (resultSet.getString("checkinAt") != null) {
+                return new Response<>("Vé đã sử dụng");
+            }
+            long now = Timestamp.getNowTimeStamp();
+            if (now > resultSet.getLong("time") + resultSet.getLong("timeMovie") * 60) {
+                return new Response<>("Phim đã dừng chiếu");
+            }
+
+            if (now < resultSet.getLong("time") - 10 * 60) {
+                return new Response<>("Xem quá sớm");
+            }
+
+            Map<String, String> data = new HashMap<>() {
+                {
+                    put("id", resultSet.getString("id"));
+                    put("time", Timestamp.convertTimeStampToString(resultSet.getLong("time"), "HH:mm dd-MM-yyyy"));
+                    put("room", resultSet.getString("room"));
+                    put("room", resultSet.getString("room"));
+                    put("person", resultSet.getString("numPerson"));
+                    put("popcorn", resultSet.getString("numPopcorn"));
+                    put("water", resultSet.getString("numWater"));
+
+                }
+            };
+
+            ResultSet resultSet1 = this.seatRepository.getSeat(id);
+            List<String> listChair = new ArrayList<>();
+            while (resultSet1.next()) {
+                listChair.add(resultSet1.getString("location"));
+            }
+
+            data.put("location", String.join(", ", listChair));
+
+            return new Response<Map<String, String>>().ok(data);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response<>("Có lỗi xảy ra");
+        }
+    }
+
+    public Response<Boolean> checkIn(String id, String staff) {
+        try {
+            long now = Timestamp.getNowTimeStamp();
+            int update = this.ticketRepository.checkIn(id, now, staff);
+            if (update <= 0) {
+                return new Response<>("Cập nhật thất bại");
+            }
+
+            return new Response<Boolean>().ok(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Response<>("Có lỗi xảy ra");
+        }
+    }
+
 }

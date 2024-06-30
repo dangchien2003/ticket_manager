@@ -8,6 +8,7 @@ import com.mycompany.ticket_manager.controller.StaffController;
 import com.mycompany.ticket_manager.model.CurrentStaff;
 import com.mycompany.ticket_manager.model.Login;
 import com.mycompany.ticket_manager.model.Response;
+import com.mycompany.ticket_manager.readQr;
 import com.mycompany.ticket_manager.view.admin.Main;
 import com.mycompany.ticket_manager.view.staff.BuyTicket;
 
@@ -21,21 +22,21 @@ public class FrameLogin extends javax.swing.JFrame {
      * Creates new form FrameLogin
      */
     StaffController staffController;
+
     public FrameLogin() {
         initComponents();
         this.setDefault();
         this.staffController = new StaffController();
     }
-    
-    private void setDefault(){
+
+    private void setDefault() {
         this.email.setText("abc@gmail.com");
         this.password.setText("staff");
 //        this.email.setText("chienboy03@gmail.com");
 //        this.password.setText("admin");
         this.error.setText("");
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,6 +54,7 @@ public class FrameLogin extends javax.swing.JFrame {
         login_staff = new javax.swing.JButton();
         error = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
+        login_staff1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -82,6 +84,13 @@ public class FrameLogin extends javax.swing.JFrame {
         error.setForeground(new java.awt.Color(255, 51, 51));
         error.setText("err");
 
+        login_staff1.setText("Đăng nhập với nhân viên soát ");
+        login_staff1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                login_staff1clickLoginStaffBuyTicket(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,7 +106,8 @@ public class FrameLogin extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(login_admin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(login_staff, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(error, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(error, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(login_staff1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -128,20 +138,22 @@ public class FrameLogin extends javax.swing.JFrame {
                 .addComponent(login_admin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(login_staff)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(login_staff1)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void setError(String error){
+    private void setError(String error) {
         this.error.setText(error);
     }
-    
-    private void cleanError(){
+
+    private void cleanError() {
         this.error.setText("");
     }
-    
-    private Login getInfoLogin(){
+
+    private Login getInfoLogin() {
         String email = this.email.getText();
         String password = new String(this.password.getPassword());
         return new Login(email, password);
@@ -150,11 +162,11 @@ public class FrameLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         Login infoLogin = this.getInfoLogin();
         Response response = this.staffController.login(infoLogin.getEmail(), infoLogin.getPassword(), "admin");
-        if(response.getSuccess() == false){
+        if (response.getSuccess() == false) {
             this.error.setText(response.getMessage());
             return;
         }
-        
+
         Main mainAdmin = new Main();
         mainAdmin.setVisible(true);
         this.dispose();
@@ -164,15 +176,29 @@ public class FrameLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         Login infoLogin = this.getInfoLogin();
         Response<CurrentStaff> response = this.staffController.login(infoLogin.getEmail(), infoLogin.getPassword(), "staff");
-        if(response.getSuccess() == false){
+        if (response.getSuccess() == false) {
             this.error.setText(response.getMessage());
             return;
         }
-        
+
         BuyTicket mainBuy = new BuyTicket(response.getData());
         mainBuy.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_clickLoginStaffBuyTicket
+
+    private void login_staff1clickLoginStaffBuyTicket(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_staff1clickLoginStaffBuyTicket
+        // TODO add your handling code here:
+        Login infoLogin = this.getInfoLogin();
+        Response<CurrentStaff> response = this.staffController.login(infoLogin.getEmail(), infoLogin.getPassword(), "staff");
+        if (response.getSuccess() == false) {
+            this.error.setText(response.getMessage());
+            return;
+        }
+
+        readQr readQr = new readQr(response.getData());
+        readQr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_login_staff1clickLoginStaffBuyTicket
 
     /**
      * @param args the command line arguments
@@ -217,6 +243,7 @@ public class FrameLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton login_admin;
     private javax.swing.JButton login_staff;
+    private javax.swing.JButton login_staff1;
     private javax.swing.JPasswordField password;
     // End of variables declaration//GEN-END:variables
 }

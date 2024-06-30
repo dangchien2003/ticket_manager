@@ -1,7 +1,9 @@
+com\mycompany\ticket_manager\service\TicketService$3.class
 com\mycompany\ticket_manager\view\admin\Main$10.class
 com\mycompany\ticket_manager\view\admin\FrameStatisticalMovie$1.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$11.class
 com\mycompany\ticket_manager\view\admin\FrameAddMovie$6.class
+com\mycompany\ticket_manager\readQr$1.class
 com\mycompany\ticket_manager\view\admin\FrameAddStaff$2.class
 com\mycompany\ticket_manager\view\admin\FrameInfoMovie$3.class
 com\mycompany\ticket_manager\view\admin\FrameInfoStaff$4.class
@@ -10,6 +12,7 @@ com\mycompany\ticket_manager\view\admin\FrameInfoMovie$6.class
 com\mycompany\ticket_manager\service\TicketService.class
 com\mycompany\ticket_manager\repository\MailRepository.class
 com\mycompany\ticket_manager\view\admin\FrameAddMovie$3.class
+com\mycompany\ticket_manager\view\FrameLogin$4.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$5.class
 com\mycompany\ticket_manager\view\admin\FrameStatisticalTicket$2.class
 com\mycompany\ticket_manager\repository\CalendarRepository.class
@@ -41,10 +44,12 @@ com\mycompany\ticket_manager\view\admin\FrameAddMovie$1.class
 com\mycompany\ticket_manager\service\StatisticalRevenueService.class
 com\mycompany\ticket_manager\view\admin\FrameAddStaff.class
 com\mycompany\ticket_manager\view\admin\Main$5.class
+com\mycompany\ticket_manager\readQr$3.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$10.class
 com\mycompany\ticket_manager\controller\StatisticalController.class
 com\mycompany\ticket_manager\view\admin\FrameInfoCalendar$5.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$7.class
+com\mycompany\ticket_manager\readQr$2.class
 com\mycompany\ticket_manager\service\TicketService$2.class
 com\mycompany\ticket_manager\view\admin\FrameStatisticalRevenue$2.class
 com\mycompany\ticket_manager\repository\StatisticalRepository.class
@@ -90,6 +95,7 @@ com\mycompany\ticket_manager\view\admin\FrameInfoCalendar$8.class
 com\mycompany\ticket_manager\view\admin\FrameInfoStaff$2.class
 com\mycompany\ticket_manager\view\admin\FrameStatisticalTicket$1.class
 com\mycompany\ticket_manager\view\admin\FrameInfoCalendar$1.class
+com\mycompany\ticket_manager\readQr.class
 com\mycompany\ticket_manager\view\admin\FrameInfoMovie$8.class
 com\mycompany\ticket_manager\view\staff\BuyTicket$4.class
 com\mycompany\ticket_manager\model\Seat.class

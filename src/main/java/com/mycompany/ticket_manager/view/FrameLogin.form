@@ -38,6 +38,7 @@
                               <Component id="login_staff" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="error" min="-2" pref="215" max="-2" attributes="0"/>
+                          <Component id="login_staff1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -77,7 +78,9 @@
               <Component id="login_admin" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="login_staff" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="login_staff1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -128,6 +131,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="password">
+    </Component>
+    <Component class="javax.swing.JButton" name="login_staff1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng nh&#x1ead;p v&#x1edb;i nh&#xe2;n vi&#xea;n so&#xe1;t "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="login_staff1clickLoginStaffBuyTicket"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

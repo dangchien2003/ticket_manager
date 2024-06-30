@@ -41,4 +41,11 @@ public class TicketController {
     public Response<Boolean> addTicket(Ticket ticket, List<String> chairs, String nameMovie, String playAt){
         return this.ticketService.addTicket(ticket, chairs, nameMovie, playAt);
     }
+    
+    public Response<Map<String, String>> getInfoTicket(String id) {
+        return this.ticketService.getInfoTicket(id);
+    }
+    public Response<Boolean> checkIn(String id, String staff) {
+        return this.ticketService.checkIn(id, staff);
+    }
 }

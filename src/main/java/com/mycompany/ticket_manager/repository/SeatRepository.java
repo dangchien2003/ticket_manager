@@ -48,6 +48,22 @@ public class SeatRepository {
             return null;
         }
     }
+    public ResultSet getSeat(String id) {
+        String sql = "select location from seat where idTicket = ?";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Lỗi sql");
+            return null;
+        } catch (Exception e) {
+            System.out.println("Lỗi");
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public int insertListSeat(List<Seat> dataList) {
         String sql = "INSERT INTO seat(idTicket, location, idCalendar) values(?, ?, ?)";
